@@ -1,0 +1,19 @@
+<p>User login</p>
+<form #loginform="ngForm" (ngSubmit)="handleLogin(loginform.value)">
+  <div class="email">
+    <label for="email">e-mail: </label>
+    <input ngModel type="text" name="email" id="email" #emailInput="ngModel" required [pattern]="emailRegex" />
+    <div *ngIf="emailInput.errors?.required && emailInput.touched">Please enter email</div>
+    <div *ngIf="emailInput.errors?.pattern && emailInput.touched">Please enter valid email</div>
+  </div>
+  <div class="password">
+    <label for="password">password: </label>
+    <input ngModel type="text" name="password" id="password" #passwordInput="ngModel" required minlength="5" />
+    <div *ngIf="passwordInput.errors?.required && passwordInput.touched">Please enter password</div>
+    <div *ngIf="passwordInput.errors?.minlength && passwordInput.touched">
+      Please enter valid password min length should be 5 symbols!
+    </div>
+  </div>
+  <button [disabled]="loginform.invalid">Login</button>
+  {{ passwordInput.errors | json }}
+</form>

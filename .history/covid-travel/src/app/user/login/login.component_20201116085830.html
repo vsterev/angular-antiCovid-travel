@@ -1,0 +1,11 @@
+<p>User login</p>
+<form #loginform="ngForm">
+  <div class="email">
+    <label for="email">e-mail: </label>
+    <input ngModel type="text" name="email" id="email" #emailInput="ngModel" />
+  </div>
+  <div class="password">
+    <label for="password">password: </label>
+    <input ngModel type="text" name="password" id="password" #passwordInput="ngModel" />
+  </div>
+</form>

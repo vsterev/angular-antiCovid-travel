@@ -1,0 +1,6 @@
+<p>your booked holidays in the system</p>
+<div class="container" *ngFor="let reservation of userReservations">
+  {{ reservation.villaId.name }} - {{ reservation.villaId.date }} - {{ reservation.villaId.nights }} -
+  {{ reservation.villaId.creatorId.email }} -
+  <a routerLink="/reservation/detail/{{ reservation._id }}" [state]="{ goBack: true }">more...</a>
+</div>

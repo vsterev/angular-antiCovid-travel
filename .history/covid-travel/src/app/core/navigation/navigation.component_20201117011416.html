@@ -1,0 +1,19 @@
+<p>navigation works!</p>
+<div class="navbar">
+  <div class="img-wrapper"><img src="../../../assets/logo.png" alt="" /></div>
+  <ul *ngIf="isLogged; else noLogged">
+    <li><a routerLink="/home-auth">home</a></li>
+    <li><a routerLink="/villa/add">add villas ..</a></li>
+    <!-- <li><a routerLink="/login">loginn</a></li>
+    <li><a routerLink="/register">register</a></li> -->
+    <li>
+      <a (click)="logout()">Logout</a>
+    </li>
+    <li *ngIf="isLogged">Hello, {{ currentUser?.name }}</li>
+  </ul>
+  <ng-template #noLogged>
+    <li><a routerLink="/">home</a></li>
+    <li><a routerLink="/login">login</a></li>
+    <li><a routerLink="/register">register</a></li>
+  </ng-template>
+</div>

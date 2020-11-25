@@ -1,0 +1,14 @@
+<p>User login</p>
+<form #loginform="ngForm" (ngSubmit)="handleLogin(loginform.value)">
+  <div class="email">
+    <label for="email">e-mail: </label>
+    <input ngModel type="text" name="email" id="email" #emailInput="ngModel" required [pattern]="emailRegex" />
+    <div *ngIf="emailInput.errors?.required && emailInput.touched">Please enter email</div>
+    <div *ngIf="emailInput.errors?.pattern && emailInput.touched">Please enter valid email</div>
+  </div>
+  <div class="password">
+    <label for="password">password: </label>
+    <input ngModel type="text" name="password" id="password" #passwordInput="ngModel" required minlength="5" />
+  </div>
+  <button [disabled]="loginform.invalid">Login</button>
+</form>

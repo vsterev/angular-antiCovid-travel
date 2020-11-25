@@ -1,0 +1,45 @@
+<p>villa-detail works!</p>
+<div class="name">{{ currentVilla?.name }}</div>
+<div class="description">{{ currentVilla?.description }}</div>
+<div class="price">price per stay{{ currentVilla?.price }} - Eur</div>
+<div class="price-descrp">{{ currentVilla?.priceDescription }}</div>
+<div class="date">from {{ currentVilla?.date }} for {{ currentVilla?.nights }} nights</div>
+<div class="likes">Likes: {{ likesNumber }}</div>
+<ng-template #availible> <div>availible</div></ng-template>
+<ng-template #unavailible><div>unavailible</div></ng-template>
+<ng-container *ngTemplateOutlet="currentVilla?.reservationId ? availible : unavailible"></ng-container>
+<!-- <div *ngIf="currentVilla?.reservationId">unavailible</div>
+<div *ngIf="!currentVilla?.reservationId">availible</div> -->
+<button *ngIf="toLike" (click)="likeHandler()">Like</button>
+<button *ngIf="toDislike" (click)="disLikeHandler()">Dislike</button>
+<button (click)="clickToBookHandler()">to Book</button>
+<button *ngIf="goBack" (click)="backHandler()">Back</button>
+<div class="book" *ngIf="toBook">
+  <form #bookForm="ngForm" (ngSubmit)="bookNow(bookForm)">
+    <div *ngFor="let pax of [].constructor(currentVilla?.beds); let i = index">
+      <label for="tourist{{ i }}_1">{{ i + 1 }} - tourist name </label>
+      <!-- [ngModel]="touristObj['tourist' + [i] + '_1']" -->
+      <input
+        type="text"
+        ngModel
+        #touristNameInput{{i}}_1="ngModel"
+        type="text"
+        name="tourist{{ i }}_1"
+        id="tourist{{ i }}_1"
+      />
+      [ngModel]="touristObj['tourist' + [i] + '_2']"
+      <input
+        type="text"
+        ngModel
+        #touristNameInput{{i}}_2="ngModel"
+        type="text"
+        name="tourist{{ i }}_2"
+        id="tourist{{ i }}_2"
+      />
+    </div>
+    <button>Book now</button>
+  </form>
+</div>
+<p>-----------</p>
+
+<app-likes></app-likes>

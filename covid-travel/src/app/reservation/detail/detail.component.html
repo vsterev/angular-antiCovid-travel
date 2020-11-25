@@ -1,0 +1,17 @@
+<p>detail works!</p>
+<div>
+  <div>name: {{ reservation?.villaId?.name }}</div>
+  <div>from: {{ reservation?.villaId?.date }} to: {{ reservation?.villaId?.nights }}</div>
+  <div>{{ reservation?.villaId?.price }} Eur</div>
+  <div>price decription: {{ reservation?.villaId?.priceDescription }}</div>
+  <p>Touristsname:</p>
+  <div class="tourists" *ngFor="let tourist of reservation?.clients; let i = index">{{ i + 1 }} - {{ tourist }}</div>
+  <p>Comments attached to reservation:</p>
+  <ng-container *ngTemplateOutlet="reservation?.comments?.length !== 0 ? isComment : noComment"></ng-container>
+  <ng-template #noComment><div>No comment are added to reservation!</div></ng-template>
+  <ng-template #isComment>
+    <div class="comments" *ngFor="let comment of reservation?.comments">{{ comment }}</div>
+  </ng-template>
+  <button *ngIf="goBack" (click)="goBackHandler()">Back</button>
+  {{ reservation | json }}
+</div>

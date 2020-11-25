@@ -1,0 +1,13 @@
+<p>home works!</p>
+<div class="container">
+  <div class="heading"><h3>platform info</h3></div>
+  <div *ngFor="let villa of villas">
+    <p>{{ villa.name }}</p>
+    <p>{{ villa.price }} Eur</p>
+    <p>{{ villa.region }}</p>
+    <p>{{ villa.date }} for {{ villa.nights }} nights</p>
+    <p *ngIf="!!villa.reservationId">sold out</p>
+    <p *ngIf="!villa.reservationId">availible</p>
+    -----------
+  </div>
+</div>

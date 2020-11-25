@@ -1,0 +1,20 @@
+<p>register works!</p>
+<form #registerForm="ngForm">
+  <div>
+    <label for="name">Name: </label>
+    <input type="text" #nameInput="ngModel" ngModel require id="name" name="name" [pattern]="nameRegex" />
+  </div>
+  <div>
+    <label for="email">Email: </label>
+    <input type="text" #emailInput="ngModel" ngModel require id="email" name="email" [pattern]="emailRegex" />
+  </div>
+  <div>
+    <label for="password">Password: </label>
+    <input type="text" #emailInput="ngModel" ngModel require id="password" name="password" minlength="5" />
+  </div>
+  <div>
+    <label for="rePassword">Re-password: </label>
+    <input type="text" #rePasswordInput="ngModel" ngModel require id="rePassword" name="rePassword" minlength="5" />
+  </div>
+  <button [disabled]="loginform.invalid">Register</button>
+</form>

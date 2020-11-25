@@ -1,0 +1,25 @@
+<p>home-auth works!</p>
+<div class="search">
+  <form #formSearch="ngForm" (ngSubmit)="searchHandler(formSearch.value)">
+    <label for="from">min price</label>
+    <input [ngModel]="from" type="text" name="from" id="from" #fromInput="ngModel" />
+    <label for="to">max price</label>
+    <input [ngModel]="to" type="text" name="to" id="to" #toInput="ngModel" />
+    <label for="search">search string</label>
+    <input [ngModel]="search" type="text" name="search" id="search" #searchInput="ngModel" />
+    <button>Search...</button>
+  </form>
+</div>
+<div class="container">
+  <div *ngFor="let villa of villas">
+    <p>{{ villa.name }}</p>
+    <p>{{ villa.price }} Eur</p>
+    <p>{{ villa.region }}</p>
+    <p>{{ villa.date }} for {{ villa.nights }} nights</p>
+    <!-- <p *ngIf="!!villa.reservationId">sold out</p> -->
+    <p *ngIf="!villa.reservationId; else soldout">availible</p>
+    <ng-template #soldout><p>sold out</p></ng-template>
+    <a [routerLink]="['/villa/detail', villa._id]">more ...</a>
+    ------------------
+  </div>
+</div>

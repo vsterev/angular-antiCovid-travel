@@ -1,0 +1,41 @@
+<p>register works!</p>
+<form #registerForm="ngForm" (ngSubmit)="handleRegister(registerForm.value)">
+  <div>
+    <label for="name">Name: </label>
+    <input type="text" #nameInput="ngModel" ngModel required id="name" name="name" [pattern]="nameRegex" />
+    <div *ngIf="nameInput.errors?.required && nameInput.touched">Please enter name</div>
+    <div *ngIf="nameInput.errors?.pattern && nameInput.touched">Please enter name - input only english letters</div>
+  </div>
+  <div>
+    <label for="email">Email: </label>
+    <input type="text" #emailInput="ngModel" ngModel required id="email" name="email" [pattern]="emailRegex" />
+    <div *ngIf="emailInput.errors?.required && emailInput.touched">Please enter email</div>
+    <div *ngIf="emailInput.errors?.pattern && emailInput.touched">Please enter valid email</div>
+  </div>
+  <div>
+    <label for="password">Password: </label>
+    <input type="text" #passwordInput="ngModel" ngModel required id="password" name="password" minlength="5" />
+    <div *ngIf="passwordInput.errors?.required && passwordInput.touched">Please enter password</div>
+    <div *ngIf="passwordInput.errors?.minlength && passwordInput.touched">
+      Please enter valid password - should contains minimum 5 symbols
+    </div>
+  </div>
+  <div>
+    <label for="rePassword">Re-password: </label>
+    <input type="text" #rePasswordInput="ngModel" ngModel required id="rePassword" name="rePassword" minlength="5" />
+    <div *ngIf="rePasswordInput.errors?.required && rePasswordInput.touched">Please confirm your password</div>
+    <div
+      *ngIf="
+        !rePasswordInput.errors?.required &&
+        rePasswordInput.touched &&
+        !rePasswordInput.pristine &&
+        rePasswordInput.value !== passwordInput.value
+      "
+    >
+      Passwords don't match
+    </div>
+  </div>
+  <button [disabled]="registerForm.invalid">Register</button>
+  <div class="error" *ngIf="errMessage">{{ errMessage }}</div>
+</form>
+<!-- {{ registerForm | json }} -->

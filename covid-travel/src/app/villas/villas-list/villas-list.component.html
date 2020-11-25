@@ -1,0 +1,10 @@
+<p>villas-list works!</p>
+<div>your own properties in the system</div>
+<!-- To-Do ako nqma villa da izliza nadpis, che nqma -->
+<div *ngFor="let villa of userVillas">
+  {{ villa.name }} - {{ villa.date }} - {{ villa.nights }} -
+  <ng-template #availible> availible - </ng-template>
+  <ng-template #unavailible>unavailible - </ng-template>
+  <ng-container *ngTemplateOutlet="villa?.reservationId ? availible : unavailible"></ng-container>
+  <a routerLink="/villa/detail/{{ villa._id }}" [state]="{ goBack: true }">more ...</a>
+</div>

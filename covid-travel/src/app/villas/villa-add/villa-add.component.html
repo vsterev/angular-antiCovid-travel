@@ -1,0 +1,59 @@
+<h2>Add your property</h2>
+<form #villaFormInput="ngForm" (ngSubmit)="submitHandler(villaFormInput.value)">
+  <!-- <form #villaFormInput="ngForm" (ngSubmit)="submitHandler($event)"> -->
+  <div>
+    <label for="name">Property name</label>
+    <input type="text" #nameInput="ngModel" ngModel name="name" id="name" />
+  </div>
+  <div>
+    <label for="region">Region</label>
+    <input type="text" #regionInput="ngModel" ngModel name="region" id="region" />
+  </div>
+  <div>
+    <label for="date">Chek-in</label>
+    <input type="date" #dateInput="ngModel" ngModel name="date" id="date" />
+  </div>
+  <div>
+    <label for="beds">Beds</label>
+    <input type="number" #bedsInput="ngModel" ngModel name="beds" id="beds" />
+  </div>
+  <div>
+    <label for="nights">Nights</label>
+    <input type="number" #nightsInput="ngModel" ngModel name="nights" id="nights" />
+  </div>
+  <div>
+    <label for="price">Price</label>
+    <input type="number" #priceInput="ngModel" ngModel name="price" id="price" />
+  </div>
+  <div>
+    <label for="priceDescription">Price description</label>
+    <input type="textarea" #priceDescriptionInput="ngModel" ngModel name="priceDescription" id="priceDescription" />
+  </div>
+  <div>
+    <label for="description">Property description</label>
+    <input type="textarea" #descriptionInput="ngModel" ngModel name="description" id="description" />
+  </div>
+  <div>
+    <label for="imageurl">Image 1</label>
+    <input type="text" #imageurlInput="ngModel" ngModel name="imageUrl" id="imageurl" />
+  </div>
+  <div>
+    <label for="imageurl2">Image 2</label>
+    <input type="text" #imageurl2Input="ngModel" ngModel name="imageUrl2" id="imageurl2" />
+  </div>
+  <div>
+    <label for="imageurl3">Image 3</label>
+    <input type="text" #imageurl3Input="ngModel" ngModel name="imageUrl3" id="imageurl3" />
+  </div>
+  <div>
+    <label for="lat">Latitude</label>
+    <input type="text" #latInput="ngModel" ngModel name="lat" id="lat" />
+  </div>
+  <div>
+    <label for="lng">Lonngitude</label>
+    <input type="text" #lngInput="ngModel" ngModel name="lng" id="lng" />
+  </div>
+  <button>Add property</button>
+  <button *ngIf="goBack" (click)="goBackHandler()">back</button>
+</form>
+<!-- const { name, region, date, beds, nights, price, priceDescription, description, imageUrl, imageUrl2, imageUrl3, coordinates } = req.body; -->

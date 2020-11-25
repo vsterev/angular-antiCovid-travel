@@ -1,0 +1,10 @@
+<p>profile works!</p>
+<div>name: {{ user?.name }}</div>
+<div>email: {{ user?.email }}</div>
+<div>
+  <button (click)="changeNameHandler()">Change Name</button>
+  <button (click)="changePasswordHandler()">Change Password</button>
+  <button (click)="addVillaClickHandler()">Add Villa</button>
+  <app-villas-list></app-villas-list>
+  <app-villas-booked></app-villas-booked>
+</div>
