@@ -12,8 +12,10 @@ import { VillaBookComponent } from './villa-book/villa-book.component';
 import { LikesComponent } from './likes/likes.component';
 import { VillasListComponent } from './villas-list/villas-list.component';
 import { VillasBookedComponent } from './villas-booked/villas-booked.component';
-
-
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatBadgeModule } from '@angular/material/badge';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,11 @@ import { VillasBookedComponent } from './villas-booked/villas-booked.component';
     CommonModule,
     VillaRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatInputModule,
+    MatButtonModule,
+    MatChipsModule,
+    MatBadgeModule
     // HttpClientModule
   ]
 })

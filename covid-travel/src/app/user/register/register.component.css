@@ -1,0 +1,30 @@
+section {
+  background-image: url('../../../assets/beach2.jpg');
+  height: 85vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+form {
+  position: relative;
+  left: 39%;
+  top: 11%;
+  /* color: white; */
+  max-width: 400px;
+  padding: 40px;
+  /* background-color: white; */
+  /* opacity: 0.8; */
+  border-radius: 20px;
+  /* border: 2px; */
+  background-color: #cef5ffb5;
+  text-align: center;
+}
+button {
+  text-align: center;
+  font-size: 20px;
+  width: 200px;
+}
+mat-form-field {
+  width: 90%;
+  font-size: 18px;
+}

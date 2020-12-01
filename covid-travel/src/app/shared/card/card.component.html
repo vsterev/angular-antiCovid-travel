@@ -1,0 +1,30 @@
+<div class="card">
+  <div class="title">{{ villa?.name }}</div>
+  <div class="region">{{ villa?.region }}</div>
+  <div class="img-wrapper">
+    <!-- <a (click)="moreHandler()" [ngClass]="isDisabled ? 'disabled' : null"><img [src]="villa?.imageUrl" /></a> -->
+    <img [src]="villa?.imageUrl" />
+  </div>
+  <div class="info">
+    <div class="price-wrap">
+      <div class="price">
+        <span>{{ villa?.price }}</span> Eur
+      </div>
+      <!-- <div [ngClass=""]="red badge">available</div> -->
+      <mat-chip-list aria-label="villas info">
+        <ng-template #available><mat-chip color="primary" selected>available</mat-chip></ng-template>
+        <ng-template #unavailable><mat-chip color="warn" selected>sold out</mat-chip></ng-template>
+        <ng-container *ngTemplateOutlet="!!villa?.reservationId ? unavailable : available"></ng-container>
+      </mat-chip-list>
+      <!-- <div [ngClass]="checkAvailability() ? 'red badge' : 'green badge'">{{ isSold }}</div> -->
+
+      <!-- <ng-template #available><div class="green badge">available</div></ng-template>
+      <ng-template #sold><div class="red badge">sold out</div></ng-template>
+      <ng-container *ngTemplateOutlet="villa?.reservationId ? sold : available"></ng-container> -->
+    </div>
+    <p class="dates">{{ villa?.nights }} nights from {{ villa?.date }}</p>
+    <div class="buttons">
+      <button mat-raised-button [disabled]="isDisabled" color="primary" (click)="moreHandler()">more ...</button>
+    </div>
+  </div>
+</div>

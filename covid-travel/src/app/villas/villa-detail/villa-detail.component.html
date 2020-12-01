@@ -1,4 +1,84 @@
-<p>villa-detail works!</p>
+<!-- <p>villa-detail works!</p> -->
+<div class="container">
+  <div class="title">
+    <h1>{{ currentVilla?.name }} - {{ currentVilla?.region }}</h1>
+  </div>
+  <div class="caroussel">
+    <img [src]="currentVilla?.imageUrl" alt="" />
+  </div>
+  <section class="badges">
+    <mat-chip-list aria-label="villas info">
+      <ng-template #available><mat-chip color="primary" selected>available</mat-chip></ng-template>
+      <ng-template #unavailable><mat-chip color="warn" selected>sold out</mat-chip></ng-template>
+      <ng-container *ngTemplateOutlet="!!currentVilla?.reservationId ? unavailable : available"></ng-container>
+    </mat-chip-list>
+    <button
+      class="like"
+      *ngIf="toLike"
+      mat-raised-button
+      color="primary"
+      [matBadge]="likesNumber"
+      matBadgePosition="after"
+      matBadgeColor="accent"
+      (click)="likeHandler()"
+    >
+      Like
+    </button>
+    <button
+      class="like"
+      *ngIf="toDislike"
+      mat-raised-button
+      color="primary"
+      [matBadge]="likesNumber"
+      matBadgePosition="after"
+      matBadgeColor="accent"
+      (click)="disLikeHandler()"
+    >
+      Dislike
+    </button>
+    <!-- <button *ngIf="toLike" (click)="likeHandler()">Like</button>
+    <button *ngIf="toDislike" (click)="disLikeHandler()">Dislike</button>
+    <div class="likes">Likes: {{ likesNumber }}</div> -->
+  </section>
+  <section class="description">
+    <article class="description-text">
+      <h2>details & description:</h2>
+      {{ currentVilla?.description }}
+    </article>
+    <article class="description-price">
+      <div class="title">Price</div>
+      <div class="price">{{ currentVilla?.price }} Eur</div>
+      <div class="date">form {{ currentVilla?.date }}</div>
+      <div class="nights">stay {{ currentVilla?.nights }} nights</div>
+    </article>
+  </section>
+  <section class="price-description">
+    <article class="price-description-text">
+      <h2>price terms & conditation:</h2>
+      <div>available stay from {{ currentVilla?.date }} for {{ currentVilla?.nights }}</div>
+      <div>policy: {{ currentVilla?.priceDescription }}</div>
+      <div>maximum accommodation: {{ currentVilla?.beds }} person</div>
+      <div>price for stay: {{ currentVilla?.price }}</div>
+    </article>
+    <article class="price-description-maps">
+      <div class="map-wrapper">
+        <img [src]="currentVilla?.imageUrl" alt="" class="src" />
+      </div>
+    </article>
+  </section>
+  <section class="buttons">
+    <button mat-raised-button (click)="backHandler()">Back</button>
+    <button
+      mat-raised-button
+      color="primary"
+      [routerLink]="['/villa/book', currentVilla?._id]"
+      [state]="{ villa: currentVilla }"
+    >
+      to Book
+    </button>
+    <!-- <button mat-raised-button color="primary" (click)="clickToBookHandler()">to Book</button> -->
+  </section>
+</div>
 <div class="name">{{ currentVilla?.name }}</div>
 <div class="description">{{ currentVilla?.description }}</div>
 <div class="price">price per stay{{ currentVilla?.price }} - Eur</div>
@@ -40,6 +120,3 @@
     <button>Book now</button>
   </form>
 </div>
-<p>-----------</p>
-
-<app-likes></app-likes>

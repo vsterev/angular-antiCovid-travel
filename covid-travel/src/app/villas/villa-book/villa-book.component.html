@@ -1,1 +1,27 @@
-<p>villas-book works!</p>
+<div class="container">
+  <div class="title">
+    <h1>{{ villa?.name }} - {{ villa?.region }}</h1>
+  </div>
+  <div class="img-wrapper">
+    <img [src]="villa?.imageUrl" alt="" />
+  </div>
+  <div class="price-info">
+    <p>date check-in {{ villa?.date }} for {{ villa?.nights }} nights</p>
+    <p>maximum person: {{ villa?.beds }}</p>
+    <p>
+      price: <b>{{ villa?.price }}</b> Eur
+    </p>
+  </div>
+  <div class="price-terms">
+    <h2>price policy and terms</h2>
+    <textarea rows="5" disabled>{{ villa?.priceDescription }} </textarea>
+  </div>
+  <div class="agree">
+    <input type="checkbox" [checked]="isAgree" (change)="checkBoxHandler()" id="checkbox" name="checkbox" />
+    <label for="checkbox">I'm agree</label>
+  </div>
+  <div class="buttons">
+    <button mat-raised-button (click)="backHandler()">Back</button>
+    <button mat-raised-button color="primary" [disabled]="!isAgree">Book ...</button>
+  </div>
+</div>

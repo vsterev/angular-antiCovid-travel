@@ -42,7 +42,7 @@ const routes: Routes = [
   {
     path: 'register',
     component: RegisterComponent,
-    canActivate: [TestGuard],
+    // canActivate: [TestGuard],
     // resolve: [LogginResolver]
   },
   {

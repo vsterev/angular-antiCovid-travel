@@ -8,11 +8,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home-auth.component.css']
 })
 export class HomeAuthComponent implements OnInit {
-  villas: IVilla[] = [];
-  constructor(private villaService: VillaService) { }
-  from = '';
-  to = '';
-  search = '';
+  // villas: IVilla[] = [];
+  // from = '';
+  // to = '';
+  // search = '';
+  villas: IVilla[];
+  from: string;
+  to: string;
+  search: string;
+  constructor(private villaService: VillaService) {
+    this.villas = [];
+    this.from = '';
+    this.to = '';
+    this.search = '';
+  }
   // str: { from: string, to: string, search: string } = { from: this.from, to: this.to, search: this.search };
   // searchVillas(this.str: any ): void {
   //   this.villaService.villaListExtended(this.str)

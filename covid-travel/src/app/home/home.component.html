@@ -1,13 +1,19 @@
-<p>home works!</p>
+<div class="badge">
+  <h1>Hallo people,</h1>
+  <p>the real secure way to have a nice and secure trip is to rent our villas, please choise one of thousends offer.</p>
+  <p>Join us - you can be a part from the antiCovid Travel 2020 society</p>
+</div>
+<div class="heading"><h1>Our best offers ...</h1></div>
 <div class="container">
-  <div class="heading"><h3>platform info</h3></div>
   <div *ngFor="let villa of villas">
-    <p>{{ villa.name }}</p>
+    <app-card [villa]="villa" [isDisabled]="true"></app-card>
+
+    <!-- <p>{{ villa.name }}</p>
     <p>{{ villa.price }} Eur</p>
     <p>{{ villa.region }}</p>
     <p>{{ villa.date }} for {{ villa.nights }} nights</p>
     <p *ngIf="!!villa.reservationId">sold out</p>
     <p *ngIf="!villa.reservationId">availible</p>
-    -----------
+    ----------- -->
   </div>
 </div>

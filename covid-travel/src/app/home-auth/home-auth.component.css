@@ -1,0 +1,20 @@
+div.container {
+  width: 80%;
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap;
+}
+div.villas {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+div.villa {
+  margin: 10px 15px;
+}
+div.search > form > mat-form-field {
+  margin: 10px;
+}

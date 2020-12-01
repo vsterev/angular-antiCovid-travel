@@ -29,6 +29,8 @@ export class VillaEditComponent implements OnInit {
   toLike: boolean | undefined;
   toDislike: boolean | undefined;
   likesNumber?: number;
+  errMsg = '';
+
   // likesDisplay(): number {
   //   return this.villaInfo?.likes.length;
   // }
@@ -66,21 +68,23 @@ export class VillaEditComponent implements OnInit {
     this.villaService.villaEdit(villaInfo, this.activatedRoute.snapshot.params.id)
       .subscribe((newVilla) => {
         console.log(newVilla);
-        return this.router.navigate(['/home-auth']);
+        return this.router.navigate(['/villa/detail', this.activatedRoute.snapshot.params.id]);
       }, (err) => {
         return console.log('Error create villa', err);
       });
   }
   deleteHandler(): void {
-    console.log('delete is clicked', this.activatedRoute.snapshot.params.id);
-    this.villaService.villaDelete(this.activatedRoute.snapshot.params.id)
-      .subscribe(() => {
-        this.router.navigate(['/home-auth']);
-        console.log('The property was deleted!');
-      },
-        () => {
-          console.log('Error deleting property!');
-        });
+    // console.log('delete is clicked', this.activatedRoute.snapshot.params.id);
+    if (window.confirm('This villa will be delete, please confirm')) {
+      this.villaService.villaDelete(this.activatedRoute.snapshot.params.id)
+        .subscribe(() => {
+          this.router.navigate(['/user/profile']);
+          console.log('The property was deleted!');
+        },
+          () => {
+            console.log('Error deleting property!');
+          });
+    }
   }
   likeHandler(): void {
     this.villaService.villaLike(this.activatedRoute.snapshot.params.id)
@@ -116,8 +120,15 @@ export class VillaEditComponent implements OnInit {
         this.toLike = !this.toLike;
         this.toDislike = !this.toDislike;
       },
-        () => {
-          console.log('Error disliking property!');
+        (err) => {
+          const arrErrerr: {
+            message: string; name: string
+          }[] = err.error.msg;
+          this.errMsg = Object.entries(arrErrerr)[0][1].message;
+          console.log('Error disliking property!', err.error.msg.name);
         });
+  }
+  backHandler(): void {
+    this.location.back();
   }
 }

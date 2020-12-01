@@ -1,0 +1,20 @@
+div.list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  border-bottom: 1px solid beige;
+}
+div.list > div {
+  flex-basis: 15%;
+  flex-grow: 1;
+  margin: 5px;
+}
+div.list > div.name {
+  flex-basis: 30%;
+}
+div.list > div.nights {
+  flex-basis: 5%;
+}
+div.list-container div.date {
+  flex-basis: 10%;
+}

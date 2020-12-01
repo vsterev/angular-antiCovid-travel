@@ -21,7 +21,6 @@ export class UserService {
   get isLogged(): boolean {
     return !!this.currentUser;
   }
-
   authCompleted$ = this.http.get('user/verify').pipe(shareReplay(1));
   constructor(private http: HttpClient, private router: Router) {
     // this.http.get<IUser>('user/verify')
@@ -48,6 +47,12 @@ export class UserService {
       .pipe(tap((user: IUser) => {
         this.currentUser = user;
       }));
+  }
+  nameChange(name: { name: string }): Observable<any> {
+    return this.http.put('user/namechange', name);
+  }
+  passChange(passwords: { password: string, oldPassword: string }): Observable<any> {
+    return this.http.put('user/passchange', passwords);
   }
 
   // tslint:disable-next-line: typedef

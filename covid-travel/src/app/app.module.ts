@@ -16,6 +16,13 @@ import { HomeComponent } from './home/home.component';
 import { HomeAuthComponent } from './home-auth/home-auth.component';
 import { UserModule } from './user/user.module';
 import { Interceptor } from './interceptor';
+// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CardComponent } from './shared/card/card.component';
+import { MatSliderModule } from '@angular/material/slider';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { MatChipsModule } from '@angular/material/chips';
+
 
 @NgModule({
   declarations: [
@@ -23,6 +30,7 @@ import { Interceptor } from './interceptor';
     HomeComponent,
     HomeAuthComponent,
     NavigationComponent,
+    CardComponent,
     // FooterComponent
   ],
   imports: [
@@ -34,7 +42,17 @@ import { Interceptor } from './interceptor';
     ReservationModule,
     HttpClientModule,
     CoreModule,
-    FormsModule
+    FormsModule,
+    // BrowserAnimationsModule,
+    MatSliderModule,
+    MatButtonModule,
+    MatInputModule,
+    MatChipsModule
+  ],
+  exports: [
+    MatButtonModule,
+    MatInputModule
+
   ],
   providers: [
     {

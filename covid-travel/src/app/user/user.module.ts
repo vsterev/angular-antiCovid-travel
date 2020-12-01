@@ -7,7 +7,9 @@ import { ProfileComponent } from './profile/profile.component';
 import { PassChangeComponent } from './pass-change/pass-change.component';
 import { FormsModule } from '@angular/forms';
 import { VillasModule } from '../villas/villas.module';
-
+import { MatInputModule } from '@angular/material/input';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 
 
 @NgModule({
@@ -16,7 +18,10 @@ import { VillasModule } from '../villas/villas.module';
     CommonModule,
     UserRoutingModule,
     FormsModule,
-    VillasModule
+    VillasModule,
+    MatInputModule,
+    MatIconModule,
+    MatButtonModule
   ],
   exports: [
     // LoginComponent

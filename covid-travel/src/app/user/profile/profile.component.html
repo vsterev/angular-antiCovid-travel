@@ -1,5 +1,102 @@
-<p>profile works!</p>
-<div>name: {{ user?.name }}</div>
+<h1>User control panel</h1>
+<div class="container">
+  <section class="main">
+    <article class="administration">
+      <div class="title"><h2>administration tools</h2></div>
+      <div class="user-info">
+        <p>user: {{ user?.name }}</p>
+        <p>email: {{ user?.email }}</p>
+      </div>
+      <div class="buttons">
+        <button mat-stroked-button color="primary" (click)="changePasswordHandler()">Change password</button>
+        <button mat-stroked-button color="primary" (click)="changeNameHandler()">Change name</button>
+        <a mat-stroked-button color="primary" routerLink="/villa/add" [state]="{ goBack: true }">Villa add...</a>
+        <!-- <button mat-raised-button color="primary" (click)="changePasswordHandler()">add villa</button> -->
+        <div *ngIf="passChanging" class="pass-change">
+          <form #formPassChange="ngForm" (ngSubmit)="passChange(formPassChange.value)" class="pass-change">
+            <mat-form-field appearance="outline">
+              <mat-label>Current password</mat-label>
+              <input matInput type="text" ngModel #oldPass="ngModel" name="oldPass" required />
+              <mat-error *ngIf="oldPass.errors?.required && oldPass.touched"
+                >Please enter your current password</mat-error
+              >
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>New password</mat-label>
+              <input matInput type="text" ngModel #newPass="ngModel" name="newPass" required [pattern]="passRegex" />
+              <mat-error *ngIf="newPass.errors?.required && newPass.touched">Please enter a new password</mat-error>
+              <mat-error *ngIf="newPass.errors?.pattern && newPass.touched"
+                >Invalid format - min 5 english letters or digits</mat-error
+              >
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Confirm password</mat-label>
+              <input matInput type="text" ngModel #reNewPass="ngModel" name="reNewPass" required />
+              <mat-error *ngIf="reNewPass.errors?.required && reNewPass.touched"
+                >Please confirm your password</mat-error
+              >
+            </mat-form-field>
+            <div
+              class="error"
+              *ngIf="
+                !reNewPass.errors?.required &&
+                reNewPass.touched &&
+                !reNewPass.pristine &&
+                reNewPass.value !== newPass.value
+              "
+            >
+              Passwords don't match
+            </div>
+            <div *ngIf="!!errMsg" class="error">{{ errMsg }}</div>
+            <button
+              mat-raised-button
+              color="primary"
+              [disabled]="
+                formPassChange.invalid ||
+                (!reNewPass.errors?.required &&
+                  reNewPass.touched &&
+                  !reNewPass.pristine &&
+                  reNewPass.value !== newPass.value)
+              "
+            >
+              Submit
+            </button>
+          </form>
+        </div>
+        <div *ngIf="nameChanging" class="new-name">
+          <form #formNameChange="ngForm" (ngSubmit)="nameChange(formNameChange.value)" class="name-change">
+            <mat-form-field appearance="outline">
+              <mat-label>New name</mat-label>
+              <input matInput type="text" ngModel name="newName" required />
+            </mat-form-field>
+            <div *ngIf="!!errMsg" class="error">{{ errMsg }}</div>
+            <button mat-raised-button color="primary" [disabled]="formNameChange.invalid">Submit</button>
+          </form>
+        </div>
+      </div>
+    </article>
+    <article class="own-properties">
+      <div class="title"><h2>your own properties</h2></div>
+      <div class="properties">
+        <app-villas-list></app-villas-list>
+      </div>
+    </article>
+    <article class="booked-properties">
+      <div class="title"><h2>your bookings</h2></div>
+      <div class="properties">
+        <app-villas-booked></app-villas-booked>
+      </div>
+    </article>
+  </section>
+  <section class="banner">
+    <div class="img-wrapp">
+      <img src="../../../assets/banner.gif" alt="" />
+    </div>
+  </section>
+  <button class="back" mat-raised-button (click)="backHandler()">Back</button>
+</div>
+
+<!-- <div>name: {{ user?.name }}</div>
 <div>email: {{ user?.email }}</div>
 <div>
   <button (click)="changeNameHandler()">Change Name</button>
@@ -7,4 +104,4 @@
   <button (click)="addVillaClickHandler()">Add Villa</button>
   <app-villas-list></app-villas-list>
   <app-villas-booked></app-villas-booked>
-</div>
+</div> -->

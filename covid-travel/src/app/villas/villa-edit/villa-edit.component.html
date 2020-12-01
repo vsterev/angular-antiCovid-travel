@@ -1,80 +1,188 @@
-<h2>Edit your property</h2>
-<form #villaFormInput="ngForm" (ngSubmit)="submitHandler(villaFormInput.value)">
-  <div>
-    <label for="name">Property name</label>
-    <input type="text" #nameInput="ngModel" [ngModel]="villaInfo?.name" name="name" id="name" />
+<div class="container">
+  <h2>Edit your property</h2>
+  <form #villaFormInput="ngForm" (ngSubmit)="submitHandler(villaFormInput.value)">
+    <div>
+      <mat-form-field appearance="standard">
+        <mat-label>Property name</mat-label>
+        <!-- <label for="name">Property name</label> -->
+        <input matInput type="text" #nameInput="ngModel" [ngModel]="villaInfo?.name" name="name" id="name" required />
+        <mat-error *ngIf="nameInput.errors?.required && nameInput.touched">Please enter property name</mat-error>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="standard">
+        <mat-label>Region</mat-label>
+        <!-- <label for="region">Region</label> -->
+        <input
+          matInput
+          type="text"
+          #regionInput="ngModel"
+          [ngModel]="villaInfo?.region"
+          name="region"
+          id="region"
+          required
+        />
+        <mat-error *ngIf="regionInput.errors?.required && regionInput.touched">Please enter region</mat-error>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="standard">
+        <mat-label>Chek-in</mat-label>
+        <!-- <label for="date">Chek-in</label> -->
+        <input matInput type="date" #dateInput="ngModel" [ngModel]="villaInfo?.date" name="date" id="date" required />
+        <mat-error *ngIf="dateInput.errors?.required && dateInput.touched">Please select date</mat-error>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="standard">
+        <mat-label>Beds</mat-label>
+        <!-- <label for="beds">Beds</label> -->
+        <input matInput type="number" #bedsInput="ngModel" [ngModel]="villaInfo?.beds" name="beds" id="beds" required />
+        <mat-error *ngIf="bedsInput.errors?.required && bedsInput.touched">Please enter maximum occupation</mat-error>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="standard">
+        <mat-label>Nights</mat-label>
+        <!-- <label for="nights">Nights</label> -->
+        <input
+          matInput
+          type="number"
+          #nightsInput="ngModel"
+          [ngModel]="villaInfo?.nights"
+          name="nights"
+          id="nights"
+          required
+        />
+        <mat-error *ngIf="nightsInput.errors?.required && nightsInput.touched">Please enter nights</mat-error>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="standard">
+        <mat-label>Price</mat-label>
+        <!-- <label for="price">Price</label> -->
+        <input
+          matInput
+          type="number"
+          #priceInput="ngModel"
+          [ngModel]="villaInfo?.price"
+          name="price"
+          id="price"
+          required
+        />
+        <mat-error *ngIf="priceInput.errors?.required && priceInput.touched">Please enter price</mat-error>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="standard">
+        <mat-label>Price description</mat-label>
+        <!-- <label for="priceDescription">Price description</label> -->
+        <textarea
+          matInput
+          #priceDescriptionInput="ngModel"
+          [ngModel]="villaInfo?.priceDescription"
+          name="priceDescription"
+          id="priceDescription"
+          rows="3"
+          required
+        ></textarea>
+        <mat-error *ngIf="priceDescriptionInput.errors?.required && priceDescriptionInput.touched"
+          >Please enter payment policy</mat-error
+        >
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="standard">
+        <mat-label>Property description</mat-label>
+        <!-- <label for="description">Property description</label> -->
+        <textarea
+          matInput
+          type="textarea"
+          #descriptionInput="ngModel"
+          [ngModel]="villaInfo?.description"
+          name="description"
+          id="description"
+          required
+        ></textarea>
+        <mat-error *ngIf="descriptionInput.errors?.required && descriptionInput.touched"
+          >Please enter property decription</mat-error
+        >
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="standard">
+        <mat-label>Image 1</mat-label>
+        <!-- <label for="imageurl">Image 1</label> -->
+        <input
+          matInput
+          type="text"
+          #imageurlInput="ngModel"
+          [ngModel]="villaInfo?.imageUrl"
+          name="imageUrl"
+          id="imageurl"
+          required
+        />
+        <mat-error *ngIf="imageurlInput.errors?.required && imageurlInput.touched"
+          >Please enter one image at least</mat-error
+        >
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="standard">
+        <mat-label>Image 2</mat-label>
+        <!-- <label for="imageurl2">Image 2</label> -->
+        <input
+          matInput
+          type="text"
+          #imageurl2Input="ngModel"
+          [ngModel]="villaInfo?.imageUrl2"
+          name="imageUrl2"
+          id="imageurl2"
+        />
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="standard">
+        <mat-label>Image 3</mat-label>
+        <!-- <label for="imageurl3">Image 3</label> -->
+        <input
+          matInput
+          type="text"
+          #imageurl3Input="ngModel"
+          [ngModel]="villaInfo?.imageUrl3"
+          name="imageUrl3"
+          id="imageurl3"
+        />
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="standard">
+        <mat-label>Latitude</mat-label>
+        <!-- <label for="lat">Latitude</label> -->
+        <input matInput type="text" #latInput="ngModel" [ngModel]="villaInfo?.coordinates?.lat" name="lat" id="lat" />
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="standard">
+        <mat-label>Lonngitude</mat-label>
+        <!-- <label for="lng">Lonngitude</label> -->
+        <input matInput type="text" #lngInput="ngModel" [ngModel]="villaInfo?.coordinates?.lng" name="lng" id="lng" />
+      </mat-form-field>
+    </div>
+    <button mat-raised-button color="primary" [disabled]="!isOwner || villaFormInput.invalid">Edit property</button>
+  </form>
+  <div class="buttons">
+    <button mat-raised-button (click)="backHandler()">Back</button>
+    <button mat-raised-button color="warn" *ngIf="isOwner" (click)="deleteHandler()">Delete property</button>
   </div>
   <div>
-    <label for="region">Region</label>
-    <input type="text" #regionInput="ngModel" [ngModel]="villaInfo?.region" name="region" id="region" />
+    <button *ngIf="toLike" (click)="likeHandler()">Like property</button>
   </div>
   <div>
-    <label for="date">Chek-in</label>
-    <input type="date" #dateInput="ngModel" [ngModel]="villaInfo?.date" name="date" id="date" />
+    <button *ngIf="toDislike" (click)="disLikeHandler()">Dislike property</button>
   </div>
-  <div>
-    <label for="beds">Beds</label>
-    <input type="number" #bedsInput="ngModel" [ngModel]="villaInfo?.beds" name="beds" id="beds" />
-  </div>
-  <div>
-    <label for="nights">Nights</label>
-    <input type="number" #nightsInput="ngModel" [ngModel]="villaInfo?.nights" name="nights" id="nights" />
-  </div>
-  <div>
-    <label for="price">Price</label>
-    <input type="number" #priceInput="ngModel" [ngModel]="villaInfo?.price" name="price" id="price" />
-  </div>
-  <div>
-    <label for="priceDescription">Price description</label>
-    <input
-      type="textarea"
-      #priceDescriptionInput="ngModel"
-      [ngModel]="villaInfo?.priceDescription"
-      name="priceDescription"
-      id="priceDescription"
-    />
-  </div>
-  <div>
-    <label for="description">Property description</label>
-    <input
-      type="textarea"
-      #descriptionInput="ngModel"
-      [ngModel]="villaInfo?.description"
-      name="description"
-      id="description"
-    />
-  </div>
-  <div>
-    <label for="imageurl">Image 1</label>
-    <input type="text" #imageurlInput="ngModel" [ngModel]="villaInfo?.imageUrl" name="imageUrl" id="imageurl" />
-  </div>
-  <div>
-    <label for="imageurl2">Image 2</label>
-    <input type="text" #imageurl2Input="ngModel" [ngModel]="villaInfo?.imageUrl2" name="imageUrl2" id="imageurl2" />
-  </div>
-  <div>
-    <label for="imageurl3">Image 3</label>
-    <input type="text" #imageurl3Input="ngModel" [ngModel]="villaInfo?.imageUrl3" name="imageUrl3" id="imageurl3" />
-  </div>
-  <div>
-    <label for="lat">Latitude</label>
-    <input type="text" #latInput="ngModel" [ngModel]="villaInfo?.coordinates?.lat" name="lat" id="lat" />
-  </div>
-  <div>
-    <label for="lng">Lonngitude</label>
-    <input type="text" #lngInput="ngModel" [ngModel]="villaInfo?.coordinates?.lng" name="lng" id="lng" />
-  </div>
-  <button [disabled]="!isOwner">Edit property</button>
-</form>
-<div>
-  <button *ngIf="isOwner" (click)="deleteHandler()">Delete property</button>
+  <!-- <app-likes [likes]="villaInfo.likes"></app-likes> -->
+  <!-- {{ likesNumber }}
+{{ villaFormInput.value | json }} -->
+  <div class="error" *ngIf="errMsg">{{ errMsg }}</div>
 </div>
-<div>
-  <button *ngIf="toLike" (click)="likeHandler()">Like property</button>
-</div>
-<div>
-  <button *ngIf="toDislike" (click)="disLikeHandler()">Dislike property</button>
-</div>
-<!-- <app-likes [likes]="villaInfo.likes"></app-likes> -->
-{{ likesNumber }}
-{{ villaFormInput.value | json }}

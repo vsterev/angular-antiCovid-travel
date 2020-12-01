@@ -1,10 +1,19 @@
-<p>villas-list works!</p>
-<div>your own properties in the system</div>
 <!-- To-Do ako nqma villa da izliza nadpis, che nqma -->
-<div *ngFor="let villa of userVillas">
-  {{ villa.name }} - {{ villa.date }} - {{ villa.nights }} -
-  <ng-template #availible> availible - </ng-template>
-  <ng-template #unavailible>unavailible - </ng-template>
-  <ng-container *ngTemplateOutlet="villa?.reservationId ? availible : unavailible"></ng-container>
-  <a routerLink="/villa/detail/{{ villa._id }}" [state]="{ goBack: true }">more ...</a>
+<div *ngIf="userVillas.length === 0 || !userVillas">No one property is added to system</div>
+<div class="list-container">
+  <div class="list" *ngFor="let villa of userVillas">
+    <div class="name">{{ villa?.name }} - {{ villa?.region }}</div>
+    <div class="date">{{ villa?.date }}</div>
+    <div class="nights">{{ villa?.nights }}</div>
+    <div class="availability">
+      <mat-chip-list aria-label="villas info">
+        <ng-template #availible><mat-chip color="primary" selected>available</mat-chip></ng-template>
+        <ng-template #unavailible><mat-chip color="warn" selected>sold out</mat-chip></ng-template>
+        <ng-container *ngTemplateOutlet="!!villa?.reservationId ? unavailible : availible"></ng-container>
+      </mat-chip-list>
+    </div>
+    <div class="more">
+      <a mat-stroked-button routerLink="/villa/edit/{{ villa._id }}" [state]="{ goBack: true }">edit ...</a>
+    </div>
+  </div>
 </div>

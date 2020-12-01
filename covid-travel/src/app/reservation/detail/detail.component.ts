@@ -11,15 +11,19 @@ import { Location } from '@angular/common';
 })
 export class DetailComponent implements OnInit {
 
-  declare reservation: IReservation;
-  goBack = false;
-  // reservation: IReservation || undefined;
+  // declare reservation: IReservation;
+  // goBack = false;
+  // reservation!: IReservation;
+  goBack: boolean;
+  reservation: IReservation | undefined;
 
   constructor(
     private activatredRoute: ActivatedRoute,
     private reservationService: ReservationService,
     private location: Location
   ) {
+    this.goBack = false;
+    this.reservation = undefined;
     const id = this.activatredRoute.snapshot.params.id;
     this.reservationService.reservationDetail(id).subscribe(booking => this.reservation = booking);
   }

@@ -1,25 +1,40 @@
-<p>home-auth works!</p>
-<div class="search">
-  <form #formSearch="ngForm" (ngSubmit)="searchHandler(formSearch.value)">
-    <label for="from">min price</label>
-    <input [ngModel]="from" type="text" name="from" id="from" #fromInput="ngModel" />
-    <label for="to">max price</label>
-    <input [ngModel]="to" type="text" name="to" id="to" #toInput="ngModel" />
-    <label for="search">search string</label>
-    <input [ngModel]="search" type="text" name="search" id="search" #searchInput="ngModel" />
-    <button>Search...</button>
-  </form>
-</div>
+<!-- <p>home-auth works!</p> -->
 <div class="container">
-  <div *ngFor="let villa of villas">
-    <p>{{ villa.name }}</p>
+  <div class="search">
+    <form #formSearch="ngForm" (ngSubmit)="searchHandler(formSearch.value)">
+      <mat-form-field appearance="standard">
+        <mat-label>min price</mat-label>
+        <input matInput [ngModel]="from" type="text" name="from" id="from" #fromInput="ngModel" />
+      </mat-form-field>
+      <mat-form-field appearance="standard">
+        <mat-label>max price</mat-label>
+        <input matInput [ngModel]="to" type="text" name="to" id="to" #toInput="ngModel" />
+      </mat-form-field>
+      <mat-form-field appearance="standard">
+        <mat-label>search string</mat-label>
+        <input matInput [ngModel]="search" type="text" name="search" id="search" #searchInput="ngModel" />
+      </mat-form-field>
+      <!-- <label for="from">min price</label>
+      <input [ngModel]="from" type="text" name="from" id="from" #fromInput="ngModel" /> -->
+      <!-- <label for="to">max price</label>
+      <input [ngModel]="to" type="text" name="to" id="to" #toInput="ngModel" />
+      <label for="search">search string</label>
+      <input [ngModel]="search" type="text" name="search" id="search" #searchInput="ngModel" /> -->
+      <button mat-stroked-button>Search...</button>
+    </form>
+  </div>
+  <div class="villas">
+    <div *ngIf="villas.length === 0">Novillas</div>
+    <div class="villa" *ngFor="let villa of villas">
+      <!-- <p>{{ villa.name }}</p>
     <p>{{ villa.price }} Eur</p>
     <p>{{ villa.region }}</p>
-    <p>{{ villa.date }} for {{ villa.nights }} nights</p>
-    <!-- <p *ngIf="!!villa.reservationId">sold out</p> -->
-    <p *ngIf="!villa.reservationId; else soldout">availible</p>
+    <p>{{ villa.date }} for {{ villa.nights }} nights</p> -->
+      <!-- <p *ngIf="!!villa.reservationId">sold out</p> -->
+      <!-- <p *ngIf="!villa.reservationId; else soldout">availible</p>
     <ng-template #soldout><p>sold out</p></ng-template>
-    <a [routerLink]="['/villa/detail', villa._id]">more ...</a>
-    ------------------
+    <a [routerLink]="['/villa/detail', villa._id]">more ...</a> -->
+      <app-card [villa]="villa" [isDisabled]="false"></app-card>
+    </div>
   </div>
 </div>

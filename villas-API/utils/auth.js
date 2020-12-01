@@ -27,7 +27,7 @@ function auth() {
         // }
         if (['token expired', 'blacklisted token', 'jwt must be provided', 'jwt malformed'].includes(err.message)) {
           // res.redirect('/user/login?error')
-          console.log(err);
+          console.log('tuk e' + err);
           res.json({ message: 'Invalid token!' });
           return;
         }

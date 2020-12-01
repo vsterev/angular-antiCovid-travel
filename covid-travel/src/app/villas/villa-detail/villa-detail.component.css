@@ -1,0 +1,108 @@
+div.container {
+  width: 70%;
+  margin: 10px auto 0;
+}
+div.title {
+  text-align: center;
+}
+div.title > h1 {
+  font-size: xx-large;
+  font-weight: 500;
+  padding-top: 20px;
+}
+div.caroussel {
+  width: 100%;
+  /* width: 1100px; */
+  height: 500px;
+}
+div.caroussel > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+h2 {
+  margin-bottom: 0px;
+}
+section.badges {
+  margin-top: 10px;
+  flex-direction: row;
+  display: flex;
+  align-items: center;
+}
+button.like {
+  width: inherit;
+}
+section.description {
+  margin: 20px auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  /* align-items: center; */
+  justify-content: space-between;
+  align-items: flex-start;
+}
+article.description-text {
+  width: 75%;
+}
+article.description-price {
+  border: 1px solid #3f51b5;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 15%;
+}
+article.description-price > div {
+  padding: 6px 0;
+}
+article.description-price > div.title {
+  background: #3f51b5;
+  color: white;
+  letter-spacing: 1px;
+  font-weight: 500;
+  font-size: 1.2em;
+  width: 100%;
+  text-align: center;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+article.description-price > div.price {
+  font-weight: 500;
+  font-size: 1.4em;
+  margin-top: 4px;
+  color: #3f51b5;
+}
+article.description-price > div.date {
+  /* padding: auto 6px !important; */
+  padding-left: 6px;
+  padding-right: 6px;
+}
+section.price-description {
+  margin: 10px auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+section.price-description > article.price-description-text {
+  width: 35%;
+}
+div.map-wrapper {
+  height: 400px;
+  width: 700px;
+}
+article.price-description-maps img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+section.buttons {
+  text-align: center;
+}
+button {
+  text-align: center;
+  font-size: 20px;
+  width: 200px;
+  margin: 20px 50px;
+}

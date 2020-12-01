@@ -1,4 +1,7 @@
-div.wrapper {
+/* div.wrapper {
   width: 85%;
   margin: 0 auto;
+} */
+div.wrapper {
+  height: 100vh;
 }

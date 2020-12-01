@@ -1,0 +1,84 @@
+* {
+  margin: 0px;
+}
+.card {
+  width: 350px;
+  border: 1px solid #b9c8e0;
+  border-radius: 5px;
+  font-size: 20px;
+}
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.img-wrapper {
+  width: 100%;
+  height: 230px;
+}
+div.title {
+  padding: 10px 0 5px 15px;
+}
+div.region {
+  color: slategray;
+  font-size: 16px;
+  padding: 0px 0 10px 15px;
+}
+div.info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px 15px;
+}
+div.info div.price > span {
+  font-weight: 500;
+  font-size: 29px;
+}
+div.info div.badge {
+  font-size: 16px;
+  padding: 5px 15px;
+  border-radius: 16px;
+  background: white;
+}
+div.info div.green {
+  color: #7ce0b6;
+  border: 1px solid #7ce0b6;
+}
+div.info div.red {
+  color: #f89f88;
+  border: 1px solid #f89f88;
+}
+p.dates {
+  color: slategray;
+
+  font-size: 16px;
+  margin: 15px 0;
+}
+div.buttons {
+  align-self: center;
+}
+/* div.buttons > button {
+  border: none;
+  color: white;
+  background: #66abef;
+  padding: 6px 20px;
+  font-size: 22px;
+  border-radius: 14px;
+  letter-spacing: 1px;
+  outline: none;
+}
+div.buttons > button:hover {
+  background: #2a76c1;
+  cursor: pointer;
+  letter-spacing: 2px;
+} */
+div.info > div.price-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+a.disabled {
+  pointer-events: none;
+  cursor: default;
+}

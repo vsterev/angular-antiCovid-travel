@@ -14,7 +14,7 @@ import { Location } from '@angular/common';
 export class VillaDetailComponent implements OnInit {
   tourists: string[] = [];
   touristObj: {} = {};
-  currentVilla!: IVilla;
+  currentVilla?: IVilla;
   likesNumber?: number;
   isOwner?: boolean;
   toLike?: boolean;
@@ -40,7 +40,7 @@ export class VillaDetailComponent implements OnInit {
         this.likesNumber = this.currentVilla?.likes.length;
         // this.booksField = Array(villa.beds).fill(0).map((x, i) => i);
 
-      });
+      }, () => this.currentVilla = undefined);
     this.goBack = history.state?.goBack || false;
 
   }
@@ -87,34 +87,36 @@ export class VillaDetailComponent implements OnInit {
     const touristsArray: string[] = [];
     // let n = 0;
     console.log(val);
-    for (let i = 0; i <= this.currentVilla.beds + 2; i += 2) {
-      const firstName: string = val._directives[i].control.value;
-      const secondName: string = val._directives[i + 1].control.value;
-      // n = i + 1;
-      const currTouristRow = `${firstName} ${secondName}`;
-      // tslint:disable-next-line: no-non-null-assertion
-      // this.tourists = [...this.tourists, currTouristRow];
-      // this.tourists.push(currTouristRow);
-      touristsArray.push(currTouristRow);
-    }
-    // for (let j = 0; j < touristsArray.length; j++) {
-    //   const [`tourist[${i}]_1`, `tourist[${i}]_1`] = touristsArray[j].split(' ');
-    //   console.log(temp)
-    // }
-    for (let i = 0; i < this.currentVilla.beds * 2; i++) {
-      // console.log(val._directives[i].name)
-      // this.touristObj[val._directives[i].name] = val._directives[i].control.value;
-      const name = val._directives[i].name;
-      const person = val._directives[i].control.value;
-      this.touristObj = { ...this.touristObj, [name]: person };
-      // this.touristObj[name] = person;
-    }
-    console.log(val);
-    console.log(val._directives[0].name);
-    console.log(val._directives[0].control.value);
-    console.log(this.tourists);
-    console.log(touristsArray)
-    console.log(this.touristObj)
+    if (this.currentVilla) {
+      for (let i = 0; i <= this.currentVilla.beds + 2; i += 2) {
+        const firstName: string = val._directives[i].control.value;
+        const secondName: string = val._directives[i + 1].control.value;
+        // n = i + 1;
+        const currTouristRow = `${firstName} ${secondName}`;
+        // tslint:disable-next-line: no-non-null-assertion
+        // this.tourists = [...this.tourists, currTouristRow];
+        // this.tourists.push(currTouristRow);
+        touristsArray.push(currTouristRow);
+      }
+      // for (let j = 0; j < touristsArray.length; j++) {
+      //   const [`tourist[${i}]_1`, `tourist[${i}]_1`] = touristsArray[j].split(' ');
+      //   console.log(temp)
+      // }
+      for (let i = 0; i < this.currentVilla.beds * 2; i++) {
+        // console.log(val._directives[i].name)
+        // this.touristObj[val._directives[i].name] = val._directives[i].control.value;
+        const name = val._directives[i].name;
+        const person = val._directives[i].control.value;
+        this.touristObj = { ...this.touristObj, [name]: person };
+        // this.touristObj[name] = person;
+      }
+      console.log(val);
+      console.log(val._directives[0].name);
+      console.log(val._directives[0].control.value);
+      console.log(this.tourists);
+      console.log(touristsArray)
+      console.log(this.touristObj)
 
+    }
   }
 }

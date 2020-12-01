@@ -13,6 +13,7 @@ export class VillaAddComponent implements OnInit {
 
   constructor(private villaService: VillaService, private router: Router, private location: Location) { }
   goBack = false;
+  errMsg = '';
   ngOnInit(): void {
     this.goBack = history.state?.goBack || false;
   }
@@ -29,6 +30,10 @@ export class VillaAddComponent implements OnInit {
         console.log(newVilla);
         return this.router.navigate(['/home-auth']);
       }, (err) => {
+        const arrErrerr: {
+          message: string; name: string
+        }[] = err.error.msg;
+        this.errMsg = Object.entries(arrErrerr)[0][1].message;
         return console.log('Error create villa', err);
       });
   }

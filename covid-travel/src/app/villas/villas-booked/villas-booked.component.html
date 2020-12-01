@@ -1,6 +1,20 @@
-<p>your booked holidays in the system</p>
+<div *ngIf="userReservations.length === 0 || !userReservations">No one booked property to system</div>
+<div class="list-container">
+  <div class="list" *ngFor="let item of userReservations">
+    <div class="name">{{ item?.villaId?.name }} - {{ item?.villaId?.region }}</div>
+    <div class="date">{{ item?.villaId?.date }}</div>
+    <div class="nights">{{ item?.villaId?.nights }}</div>
+    <div class="owner">
+      {{ item.villaId.creatorId.email }}
+    </div>
+    <div class="more">
+      <a mat-stroked-button routerLink="/reservation/detail/{{ item._id }}" [state]="{ goBack: true }">more ...</a>
+    </div>
+  </div>
+</div>
+<!-- <p>your booked holidays in the system</p>
 <div class="container" *ngFor="let reservation of userReservations">
   {{ reservation.villaId.name }} - {{ reservation.villaId.date }} - {{ reservation.villaId.nights }} -
   {{ reservation.villaId.creatorId.email }} -
   <a routerLink="/reservation/detail/{{ reservation._id }}" [state]="{ goBack: true }">more...</a>
-</div>
+</div> -->

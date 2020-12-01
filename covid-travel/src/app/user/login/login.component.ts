@@ -8,10 +8,17 @@ import { UserService } from '../user.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  emailRegex = new RegExp(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/);
-  errMessage = '';
-
-  constructor(private userService: UserService, private router: Router) { }
+  // emailRegex = new RegExp(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/);
+  // errMessage = '';
+  // hide = true;
+  emailRegex: RegExp;
+  errMessage: string;
+  hide: boolean;
+  constructor(private userService: UserService, private router: Router) {
+    this.emailRegex = new RegExp(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/);
+    this.errMessage = '';
+    this.hide = true;
+  }
 
   ngOnInit(): void {
 

@@ -122,7 +122,7 @@ module.exports = {
         })
         .then(([user, match]) => {
           if (!match) {
-            res.status(401).json({ status: false, msg: "Old Password doesn't correct" });
+            res.status(401).json({ msg: "Old Password doesn't correct" });
             return;
           }
           return userModel.findByIdAndUpdate(user.id, { password });
@@ -134,7 +134,7 @@ module.exports = {
           return;
         })
         .catch((err) => {
-          res.status(400).json({ status: false, msg: err });
+          res.status(400).json({ err });
           return;
         });
     },
@@ -148,7 +148,7 @@ module.exports = {
         .findByIdAndUpdate(user.id, { name }, { runValidators: true })
         .then((user) => {
           // console.log(user)
-          res.status(200).json({ status: true, msg: 'Name is changed!' });
+          res.status(200).json(user);
           return;
         })
         .catch((err) => {

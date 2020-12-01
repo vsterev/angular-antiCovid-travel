@@ -22,8 +22,8 @@ module.exports = {
       const user = req.user;
       villaModel
         .find({ creatorId: user.id })
-        .populate('reservationId')
-        .populate('creatorId')
+        .populate('reservationId creatorId')
+        // .populate('creatorId')
         .then((villas) => {
           res.status(200).json(villas);
         })
@@ -257,6 +257,7 @@ module.exports = {
         .find(query)
         .sort({ likes: -1, created_аt: -1 })
         // villaModel.find(query).sort({ 'likes': -1, 'created_аt': -1 }).limit(+limit)
+        .populate('reservationId')
         .then((villas) => {
           // res.render('homeAuth', { title: 'Trip home page', user, trips })
           res.status(200).json(villas);
