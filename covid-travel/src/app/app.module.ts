@@ -16,7 +16,7 @@ import { HomeComponent } from './home/home.component';
 import { HomeAuthComponent } from './home-auth/home-auth.component';
 import { UserModule } from './user/user.module';
 import { Interceptor } from './interceptor';
-// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CardComponent } from './shared/card/card.component';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatButtonModule } from '@angular/material/button';
@@ -43,7 +43,7 @@ import { MatChipsModule } from '@angular/material/chips';
     HttpClientModule,
     CoreModule,
     FormsModule,
-    // BrowserAnimationsModule,
+    BrowserAnimationsModule,
     MatSliderModule,
     MatButtonModule,
     MatInputModule,
