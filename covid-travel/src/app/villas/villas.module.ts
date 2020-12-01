@@ -40,7 +40,7 @@ import { MatBadgeModule } from '@angular/material/badge';
     MatInputModule,
     MatButtonModule,
     MatChipsModule,
-    MatBadgeModule
+    MatBadgeModule,
     // HttpClientModule
   ]
 })

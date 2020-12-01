@@ -20,6 +20,7 @@ export class VillaDetailComponent implements OnInit {
   toLike?: boolean;
   toDislike?: boolean;
   toBook = false;
+  isBooked = false;
   booksField: any[] = [];
   goBack = false;
   constructor(
@@ -35,6 +36,7 @@ export class VillaDetailComponent implements OnInit {
       .subscribe(villa => {
         this.currentVilla = villa;
         this.isOwner = villa.creatorId._id === this.userService.currentUser.userId;
+        this.isBooked = !!villa.reservationId;
         this.toLike = !villa.likes.includes(this.userService.currentUser.userId) && !this.isOwner;
         this.toDislike = villa.likes.includes(this.userService.currentUser.userId) && !this.isOwner;
         this.likesNumber = this.currentVilla?.likes.length;

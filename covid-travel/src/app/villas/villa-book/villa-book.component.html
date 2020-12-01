@@ -20,8 +20,36 @@
     <input type="checkbox" [checked]="isAgree" (change)="checkBoxHandler()" id="checkbox" name="checkbox" />
     <label for="checkbox">I'm agree</label>
   </div>
-  <div class="buttons">
-    <button mat-raised-button (click)="backHandler()">Back</button>
-    <button mat-raised-button color="primary" [disabled]="!isAgree">Book ...</button>
-  </div>
+
+  <form [formGroup]="reservationForm" (ngSubmit)="bookHandler(reservationForm?.value)">
+    <div formArrayName="tourists" class="tourists-name">
+      <div *ngIf="isAgree">
+        <h3>Booking details</h3>
+        <!-- <button (click)="addTourist()">Add Tourist</button> -->
+        <div *ngFor="let tourist of tourists?.controls; let i = index">
+          <!-- <label>
+            Tourist {{ i + 1 }}:
+            <input type="text" [formControlName]="i" />
+          </label> -->
+          <mat-form-field appearance="outline">
+            <mat-label>Tourist {{ i + 1 }}</mat-label>
+            <input matInput type="text" [formControlName]="i" />
+          </mat-form-field>
+        </div>
+      </div>
+      <!-- <button [disabled]="!isAgree">Sign</button> -->
+    </div>
+    <div>
+      <mat-form-field appearance="outline" *ngIf="isAgree" class="comment">
+        <mat-label>Comment: </mat-label>
+        <textarea matInput type="text" formControlName="comment" rows="6"></textarea>
+      </mat-form-field>
+    </div>
+    <div class="buttons">
+      <button mat-raised-button (click)="backHandler()">Back</button>
+      <button mat-raised-button color="primary" [disabled]="!isAgree || isOwner || isBooked">Book ...</button>
+    </div>
+  </form>
 </div>
+{{ isOwner | json }}
+{{ !isAgree | json }}

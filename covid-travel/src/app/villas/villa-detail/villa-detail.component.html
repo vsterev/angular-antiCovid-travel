@@ -73,6 +73,7 @@
       color="primary"
       [routerLink]="['/villa/book', currentVilla?._id]"
       [state]="{ villa: currentVilla }"
+      [disabled]="isBooked || isOwner"
     >
       to Book
     </button>
@@ -92,14 +93,14 @@
 <div *ngIf="!currentVilla?.reservationId">availible</div> -->
 <button *ngIf="toLike" (click)="likeHandler()">Like</button>
 <button *ngIf="toDislike" (click)="disLikeHandler()">Dislike</button>
-<button (click)="clickToBookHandler()">to Book</button>
+<button (click)="clickToBookHandler()" [disabled]="isBooked || isOwner">to Book</button>
 <button *ngIf="goBack" (click)="backHandler()">Back</button>
-<div class="book" *ngIf="toBook">
-  <form #bookForm="ngForm" (ngSubmit)="bookNow(bookForm)">
+<!-- <div class="book" *ngIf="toBook"> -->
+<!-- <form #bookForm="ngForm" (ngSubmit)="bookNow(bookForm)">
     <div *ngFor="let pax of [].constructor(currentVilla?.beds); let i = index">
-      <label for="tourist{{ i }}_1">{{ i + 1 }} - tourist name </label>
-      <!-- [ngModel]="touristObj['tourist' + [i] + '_1']" -->
-      <input
+      <label for="tourist{{ i }}_1">{{ i + 1 }} - tourist name </label> -->
+<!-- [ngModel]="touristObj['tourist' + [i] + '_1']" -->
+<!-- <input
         type="text"
         ngModel
         #touristNameInput{{i}}_1="ngModel"
@@ -118,5 +119,5 @@
       />
     </div>
     <button>Book now</button>
-  </form>
-</div>
+  </form> -->
+<!-- </div> -->

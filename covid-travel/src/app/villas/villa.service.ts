@@ -39,4 +39,7 @@ export class VillaService {
   userVillas(): Observable<IVilla[]> {
     return this.http.get<IVilla[]>(`offer/all-offers/user`);
   }
+  villaBook(params: { villaId: string | undefined, clients: [], comment: string }): Observable<any> {
+    return this.http.post<any>('offer/book', params);
+  }
 }
