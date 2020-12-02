@@ -1,3 +1,4 @@
+import { MapComponent } from 'src/app/shared/map/map.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
@@ -16,6 +17,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatBadgeModule } from '@angular/material/badge';
+import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,8 @@ import { MatBadgeModule } from '@angular/material/badge';
     VillaBookComponent,
     LikesComponent,
     VillasListComponent,
-    VillasBookedComponent
+    VillasBookedComponent,
+    MapComponent
   ],
   exports: [
     VillasListComponent,
@@ -41,6 +44,9 @@ import { MatBadgeModule } from '@angular/material/badge';
     MatButtonModule,
     MatChipsModule,
     MatBadgeModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyAly0ITa9Bt9omdeaKO4VZRueW_3N6fwhw'
+    })
     // HttpClientModule
   ]
 })

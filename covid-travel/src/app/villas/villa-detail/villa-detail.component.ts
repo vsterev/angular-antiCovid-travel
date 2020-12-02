@@ -1,5 +1,5 @@
 import { IVilla } from './../../shared/interfaces/villa';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { UserService } from 'src/app/user/user.service';
 import { VillaService } from '../villa.service';
@@ -46,6 +46,7 @@ export class VillaDetailComponent implements OnInit {
     this.goBack = history.state?.goBack || false;
 
   }
+
   likeHandler(): void {
     this.villaService.villaLike(this.activatedRoute.snapshot.params.id)
       .subscribe(() => {

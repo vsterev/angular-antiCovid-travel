@@ -114,24 +114,27 @@
       <!-- <label for="imageurl3">Image 3</label>
       <input type="text" #imageurl3Input="ngModel" ngModel name="imageUrl3" id="imageurl3" /> -->
     </div>
-    <div>
+    <!-- <div>
       <mat-form-field appearance="standard">
         <mat-label>Latitude</mat-label>
         <input matInput type="text" #latInput="ngModel" ngModel name="lat" id="lat" />
-      </mat-form-field>
-      <!-- <label for="lat">Latitude</label>
+      </mat-form-field> -->
+    <!-- <label for="lat">Latitude</label>
       <input type="text" #latInput="ngModel" ngModel name="lat" id="lat" /> -->
-    </div>
-    <div>
+    <!-- </div> -->
+    <!-- <div>
       <mat-form-field appearance="standard">
         <mat-label>Lonngitude</mat-label>
         <input matInput type="text" #lngInput="ngModel" ngModel name="lng" id="lng" />
-      </mat-form-field>
-      <!-- <label for="lng">Lonngitude</label>
+      </mat-form-field> -->
+    <!-- <label for="lng">Lonngitude</label>
       <input type="text" #lngInput="ngModel" ngModel name="lng" id="lng" /> -->
-    </div>
+    <!-- </div> -->
     <button mat-raised-button *ngIf="goBack" (click)="goBackHandler()">back</button>
     <button mat-raised-button color="primary" [disabled]="villaFormInput.invalid">Add property</button>
+    <div class="map-wrapper">
+      <app-map (coordinates)="test($event)"></app-map>
+    </div>
   </form>
   <div class="error" *ngIf="errMsg">{{ errMsg }}</div>
 </div>

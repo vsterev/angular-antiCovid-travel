@@ -62,7 +62,10 @@
     </article>
     <article class="price-description-maps">
       <div class="map-wrapper">
-        <img [src]="currentVilla?.imageUrl" alt="" class="src" />
+        <!-- <img [src]="currentVilla?.imageUrl" alt="" class="src" /> -->
+        <ng-container *ngIf="currentVilla?.coordinates?.lat && currentVilla?.coordinates?.lng">
+          <app-map [lat]="+currentVilla?.coordinates?.lat" [lng]="+currentVilla?.coordinates?.lng" zoom="16"></app-map>
+        </ng-container>
       </div>
     </article>
   </section>
