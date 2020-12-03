@@ -130,10 +130,12 @@
     <!-- <label for="lng">Lonngitude</label>
       <input type="text" #lngInput="ngModel" ngModel name="lng" id="lng" /> -->
     <!-- </div> -->
-    <button mat-raised-button *ngIf="goBack" (click)="goBackHandler()">back</button>
-    <button mat-raised-button color="primary" [disabled]="villaFormInput.invalid">Add property</button>
     <div class="map-wrapper">
-      <app-map (coordinates)="test($event)"></app-map>
+      <app-map (coordinates)="eventCoordinates($event)"></app-map>
+    </div>
+    <div class="buttons-wrap">
+      <button mat-raised-button (click)="goBackHandler()">back</button>
+      <button mat-raised-button color="primary" [disabled]="villaFormInput.invalid">Add property</button>
     </div>
   </form>
   <div class="error" *ngIf="errMsg">{{ errMsg }}</div>

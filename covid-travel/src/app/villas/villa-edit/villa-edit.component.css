@@ -29,3 +29,8 @@ div.buttons {
 button.modal {
   background: red;
 }
+div.map-wrapper {
+  height: 400px;
+  width: 800px;
+  margin-bottom: 10px;
+}

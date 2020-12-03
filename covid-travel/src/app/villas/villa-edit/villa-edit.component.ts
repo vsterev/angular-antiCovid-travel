@@ -1,5 +1,5 @@
 import { UserService } from './../../user/user.service';
-import { ChangeDetectionStrategy, Component, ElementRef, OnInit, SimpleChanges, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, Input, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { Router, ActivatedRouteSnapshot, ActivatedRoute } from '@angular/router';
 import { IVilla } from 'src/app/shared/interfaces/villa';
 import { VillaService } from '../villa.service';
@@ -30,6 +30,7 @@ export class VillaEditComponent implements OnInit {
   toDislike: boolean | undefined;
   likesNumber?: number;
   errMsg = '';
+  coordinates?: { lat: string, lng: string };
 
   // likesDisplay(): number {
   //   return this.villaInfo?.likes.length;
@@ -63,8 +64,10 @@ export class VillaEditComponent implements OnInit {
   submitHandler(val: {}): void {
     const { name, region, date, beds, nights, price, priceDescription, description, imageUrl, imageUrl2, imageUrl3, lat, lng }: any = val;
     const villaInfo: any = {
-      name, region, date, beds, nights, price, priceDescription, description, imageUrl, imageUrl2, imageUrl3, coordinates: { lat, lng }
+      name, region, date, beds, nights, price, priceDescription, description,
+      imageUrl, imageUrl2, imageUrl3, coordinates: { ...this.coordinates }
     };
+    // console.log(villaInfo);
     this.villaService.villaEdit(villaInfo, this.activatedRoute.snapshot.params.id)
       .subscribe((newVilla) => {
         console.log(newVilla);
@@ -130,5 +133,8 @@ export class VillaEditComponent implements OnInit {
   }
   backHandler(): void {
     this.location.back();
+  }
+  coordinatesEvent(coors: { lat: string, lng: string }): void {
+    this.coordinates = coors;
   }
 }

@@ -26,23 +26,23 @@ export class VillaAddComponent implements OnInit {
       name, region, date, beds, nights, price, priceDescription, description,
       imageUrl, imageUrl2, imageUrl3, coordinates: { lat: this.coordinates?.lat, lng: this.coordinates?.lng }
     };
-    console.log(villaInfo);
-    // this.villaService.villaAdd(villaInfo)
-    //   .subscribe((newVilla) => {
-    //     console.log(newVilla);
-    //     return this.router.navigate(['/home-auth']);
-    //   }, (err) => {
-    //     const arrErrerr: {
-    //       message: string; name: string
-    //     }[] = err.error.msg;
-    //     this.errMsg = Object.entries(arrErrerr)[0][1].message;
-    //     return console.log('Error create villa', err);
-    //   });
+    // console.log(villaInfo);
+    this.villaService.villaAdd(villaInfo)
+      .subscribe((newVilla) => {
+        console.log(newVilla);
+        return this.router.navigate(['/user/profile']);
+      }, (err) => {
+        const arrErrerr: {
+          message: string; name: string
+        }[] = err.error.msg;
+        this.errMsg = Object.entries(arrErrerr)[0][1].message;
+        return console.log('Error create villa', err);
+      });
   }
   goBackHandler(): void {
     this.location.back();
   }
-  test(coord: { lat: string, lng: string }): void {
+  eventCoordinates(coord: { lat: string, lng: string }): void {
     this.coordinates = coord;
   }
 }

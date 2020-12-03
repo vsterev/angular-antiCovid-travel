@@ -1,13 +1,13 @@
 div.container {
-  width: 80%;
-  margin: 10px auto 0 25%;
+  width: 40%;
+  margin: 10px auto;
 }
 /* form > div {
   width: 100%;
   margin: 0 auto;
 } */
 mat-form-field {
-  width: 50%;
+  width: 80%;
   margin: 0 auto;
   font-size: 18px;
 }
@@ -24,4 +24,14 @@ div.error {
 div.map-wrapper {
   width: 770px;
   height: 400px;
+  margin-bottom: 10px;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  /* max-width: 770px; */
+}
+div.buttons-wrap {
+  display: flex;
+  justify-content: space-between;
 }

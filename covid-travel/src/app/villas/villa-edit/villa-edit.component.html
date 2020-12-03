@@ -155,19 +155,28 @@
         />
       </mat-form-field>
     </div>
-    <div>
+    <!-- <div>
       <mat-form-field appearance="standard">
-        <mat-label>Latitude</mat-label>
-        <!-- <label for="lat">Latitude</label> -->
+        <mat-label>Latitude</mat-label> -->
+    <!-- <label for="lat">Latitude</label>
         <input matInput type="text" #latInput="ngModel" [ngModel]="villaInfo?.coordinates?.lat" name="lat" id="lat" />
       </mat-form-field>
     </div>
     <div>
       <mat-form-field appearance="standard">
         <mat-label>Lonngitude</mat-label>
-        <!-- <label for="lng">Lonngitude</label> -->
-        <input matInput type="text" #lngInput="ngModel" [ngModel]="villaInfo?.coordinates?.lng" name="lng" id="lng" />
+        <label for="lng">Lonngitude</label> -->
+    <!-- <input matInput type="text" #lngInput="ngModel" [ngModel]="villaInfo?.coordinates?.lng" name="lng" id="lng" />
       </mat-form-field>
+    </div> -->
+    <div class="map-wrapper">
+      <app-map
+        [lat]="+villaInfo?.coordinates?.lat"
+        [lng]="+villaInfo?.coordinates?.lng"
+        zoom="16"
+        [hasMarker]="true"
+        (coordinates)="coordinatesEvent($event)"
+      ></app-map>
     </div>
     <button mat-raised-button color="primary" [disabled]="!isOwner || villaFormInput.invalid">Edit property</button>
   </form>
