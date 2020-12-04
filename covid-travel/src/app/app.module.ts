@@ -30,7 +30,7 @@ import { MatChipsModule } from '@angular/material/chips';
     HomeComponent,
     HomeAuthComponent,
     NavigationComponent,
-    CardComponent
+    CardComponent,
     // FooterComponent
   ],
   imports: [

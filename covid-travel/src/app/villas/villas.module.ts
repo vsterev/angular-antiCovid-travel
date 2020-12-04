@@ -1,3 +1,4 @@
+import { CarouselComponent } from './../shared/carousel/carousel.component';
 import { MapComponent } from 'src/app/shared/map/map.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -18,6 +19,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatBadgeModule } from '@angular/material/badge';
 import { AgmCoreModule } from '@agm/core';
+import { NguCarouselModule } from '@ngu/carousel';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,8 @@ import { AgmCoreModule } from '@agm/core';
     LikesComponent,
     VillasListComponent,
     VillasBookedComponent,
-    MapComponent
+    MapComponent,
+    CarouselComponent
   ],
   exports: [
     VillasListComponent,
@@ -44,6 +47,7 @@ import { AgmCoreModule } from '@agm/core';
     MatButtonModule,
     MatChipsModule,
     MatBadgeModule,
+    NguCarouselModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAly0ITa9Bt9omdeaKO4VZRueW_3N6fwhw'
     })

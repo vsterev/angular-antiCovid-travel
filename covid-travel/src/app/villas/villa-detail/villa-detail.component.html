@@ -1,10 +1,9 @@
-<!-- <p>villa-detail works!</p> -->
 <div class="container">
   <div class="title">
     <h1>{{ currentVilla?.name }} - {{ currentVilla?.region }}</h1>
   </div>
-  <div class="caroussel">
-    <img [src]="currentVilla?.imageUrl" alt="" />
+  <div class="caroussel" *ngIf="currentVilla">
+    <app-carousel [carouselItems]="carouselItems"></app-carousel>
   </div>
   <section class="badges">
     <mat-chip-list aria-label="villas info">

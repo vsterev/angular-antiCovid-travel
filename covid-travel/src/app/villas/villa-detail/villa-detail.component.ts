@@ -1,5 +1,5 @@
 import { IVilla } from './../../shared/interfaces/villa';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { UserService } from 'src/app/user/user.service';
 import { VillaService } from '../villa.service';
@@ -23,6 +23,7 @@ export class VillaDetailComponent implements OnInit {
   isBooked = false;
   booksField: any[] = [];
   goBack = false;
+  carouselItems?: any[];
   constructor(
     private villaService: VillaService,
     private router: Router,
@@ -41,11 +42,12 @@ export class VillaDetailComponent implements OnInit {
         this.toDislike = villa.likes.includes(this.userService.currentUser.userId) && !this.isOwner;
         this.likesNumber = this.currentVilla?.likes.length;
         // this.booksField = Array(villa.beds).fill(0).map((x, i) => i);
+        this.carouselItems = [villa.imageUrl, villa.imageUrl2 || undefined, villa.imageUrl3 || undefined].filter(el => el);
 
       }, () => this.currentVilla = undefined);
     this.goBack = history.state?.goBack || false;
-
   }
+
 
   likeHandler(): void {
     this.villaService.villaLike(this.activatedRoute.snapshot.params.id)
@@ -117,8 +119,8 @@ export class VillaDetailComponent implements OnInit {
       console.log(val._directives[0].name);
       console.log(val._directives[0].control.value);
       console.log(this.tourists);
-      console.log(touristsArray)
-      console.log(this.touristObj)
+      console.log(touristsArray);
+      console.log(this.touristObj);
 
     }
   }

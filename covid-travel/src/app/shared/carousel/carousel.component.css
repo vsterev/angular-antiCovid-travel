@@ -1,0 +1,87 @@
+/* Add application styles & imports to this file! */
+.item {
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.tile {
+  /* min-height: 200px;
+  background-color: #ccc;
+  background-size: cover !important; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); */
+}
+/* div.img-wrapper {
+  width: 100%;
+  max-height: 500px;
+  overflow: hidden;
+} */
+img {
+  max-height: 600px;
+  width: 100%;
+  object-fit: cover;
+}
+.leftRs,
+.rightRs {
+  border: none;
+  position: absolute;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  width: 20%;
+  height: 100%;
+  /* border: 1px solid grey; */
+  /* box-shadow: 1px 2px 10px -1px rgba(0, 0, 0, 0.3); */
+  /* border-radius: 999px; */
+  left: 0;
+  z-index: 1;
+  background-color: transparent;
+  font-size: 58px;
+  cursor: pointer;
+  outline: none;
+  color: azure;
+}
+.rightRs {
+  border: none;
+  position: absolute;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  width: 20%;
+  height: 100%;
+  /* border: 1px solid grey; */
+  /* box-shadow: 1px 2px 10px -1px rgba(0, 0, 0, 0.3); */
+  /* border-radius: 999px; */
+  right: -1072px;
+  z-index: 1;
+  background-color: transparent;
+  font-size: 58px;
+  cursor: pointer;
+  outline: none;
+  color: azure;
+}
+
+.myPoint {
+  list-style-type: none;
+  text-align: center;
+  padding: 2px;
+  margin: 0;
+  white-space: nowrap;
+  overflow: auto;
+  box-sizing: border-box;
+}
+.myPoint li {
+  display: inline-block;
+  border-radius: 50%;
+  border: 2px solid rgb(63 81 181);
+  padding: 4px;
+  margin: 0 3px;
+  transition-timing-function: cubic-bezier(0.17, 0.67, 0.83, 0.67);
+  transition: 0.4s;
+}
+.myPoint li.active {
+  background: #7fb6e6;
+  transform: scale(1.2);
+}

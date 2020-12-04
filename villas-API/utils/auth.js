@@ -1,5 +1,6 @@
 const jwt = require('./jwt');
 const { userModel, tokenBlacklistModel } = require('../models');
+const config = require('../config/config');
 
 function auth() {
   return function (req, res, next) {
@@ -28,10 +29,13 @@ function auth() {
         if (['token expired', 'blacklisted token', 'jwt must be provided', 'jwt malformed'].includes(err.message)) {
           // res.redirect('/user/login?error')
           console.log('tuk e' + err);
-          res.json({ message: 'Invalid token!' });
+          res.clearCookie(config.authCookieName).json({ logoutSuccess: true });
+          // res.json({ message: 'Invalid token!' });
           return;
         }
         console.log(err);
+        res.clearCookie(config.authCookieName).json({ logoutSuccess: true });
+        // res.json({ message: 'Invalid token!' });
       });
   };
 }

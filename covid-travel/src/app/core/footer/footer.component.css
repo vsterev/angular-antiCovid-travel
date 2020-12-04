@@ -3,4 +3,8 @@ p {
   padding: 8px;
   text-align: center;
   font-size: 20px;
+  /* position: absolute; */
+  /* position: absolute;
+  bottom: 0;
+  width: 100%; */
 }

@@ -10,21 +10,20 @@ div.title > h1 {
   font-weight: 500;
   padding-top: 20px;
 }
-div.caroussel {
+/* div.caroussel {
   width: 100%;
-  /* width: 1100px; */
-  height: 500px;
-}
-div.caroussel > img {
-  width: 100%;
+  height: 550px;
+} */
+/* div.caroussel > img {
+ width: 100%;
   height: 100%;
   object-fit: cover;
-}
+}*/
 h2 {
   margin-bottom: 0px;
 }
 section.badges {
-  margin-top: 10px;
+  /* margin-top: 10px; */
   flex-direction: row;
   display: flex;
   align-items: center;
