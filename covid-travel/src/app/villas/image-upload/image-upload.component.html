@@ -1,0 +1,21 @@
+<!-- <label>Image {{ num }}</label> -->
+
+<!-- Browse Button -->
+<!-- <input type="file" (change)="getPhoto($event)" accept=".png, .jpg" /> -->
+<!-- {{ percintage }} -->
+<!-- <button mat-raised-button (click)="uploadPhoto()" [disabled]="disabled">upload</button> -->
+
+<!-- <mat-card class="zone zone-picker"> -->
+<mat-form-field>
+  <mat-label>Image {{ num }}</mat-label>
+  <ngx-mat-file-input [formControl]="fileControl" [ngModel]="selectedImage" accept=".png, .jpg">
+    <!-- <mat-icon ngxMatFileInputIcon>folder</mat-icon> -->
+  </ngx-mat-file-input>
+</mat-form-field>
+<mat-progress-bar *ngIf="percintage" mode="determinate" [value]="percintage"></mat-progress-bar>
+
+<!-- {{ percintage }} -->
+<!-- <button mat-raised-button (click)="uploadPhoto()" [disabled]="disabled">upload</button> -->
+<img *ngIf="!!url" [src]="url" />
+
+<!-- </mat-card> -->

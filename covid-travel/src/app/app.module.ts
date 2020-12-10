@@ -23,7 +23,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatChipsModule } from '@angular/material/chips';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,7 +46,8 @@ import { MatChipsModule } from '@angular/material/chips';
     MatSliderModule,
     MatButtonModule,
     MatInputModule,
-    MatChipsModule
+    MatChipsModule,
+
   ],
   exports: [
     MatButtonModule,
@@ -61,7 +61,7 @@ import { MatChipsModule } from '@angular/material/chips';
       multi: true
     },
     AuthLoggedGuard,
-    LogginResolver
+    LogginResolver,
   ],
   bootstrap: [AppComponent]
 })

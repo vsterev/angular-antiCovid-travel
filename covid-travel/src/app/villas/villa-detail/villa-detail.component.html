@@ -2,7 +2,7 @@
   <div class="title">
     <h1>{{ currentVilla?.name }} - {{ currentVilla?.region }}</h1>
   </div>
-  <div class="caroussel" *ngIf="currentVilla">
+  <div class="caroussel" *ngIf="currentVilla?.imageUrl">
     <app-carousel [carouselItems]="carouselItems"></app-carousel>
   </div>
   <section class="badges">

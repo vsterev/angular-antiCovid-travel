@@ -44,7 +44,11 @@ export class VillaDetailComponent implements OnInit {
         // this.booksField = Array(villa.beds).fill(0).map((x, i) => i);
         this.carouselItems = [villa.imageUrl, villa.imageUrl2 || undefined, villa.imageUrl3 || undefined].filter(el => el);
 
-      }, () => this.currentVilla = undefined);
+      }, () => {
+        this.currentVilla = undefined;
+        console.log('Not connection to the firebase')
+      }
+      );
     this.goBack = history.state?.goBack || false;
   }
 

@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "covid-travel-36e4f": {
+      "hosting": {
+        "covid-travel": [
+          "covid-travel-36e4f"
+        ]
+      }
+    }
+  }
+}

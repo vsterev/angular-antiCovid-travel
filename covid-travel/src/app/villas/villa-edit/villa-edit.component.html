@@ -110,9 +110,8 @@
       </mat-form-field>
     </div>
     <div>
-      <mat-form-field appearance="standard">
+      <!-- <mat-form-field appearance="standard">
         <mat-label>Image 1</mat-label>
-        <!-- <label for="imageurl">Image 1</label> -->
         <input
           matInput
           type="text"
@@ -125,12 +124,15 @@
         <mat-error *ngIf="imageurlInput.errors?.required && imageurlInput.touched"
           >Please enter one image at least</mat-error
         >
-      </mat-form-field>
+      </mat-form-field> -->
+      <app-image-upload num="1" (urlOutput)="getUploadedImageUrl($event, 1)"></app-image-upload>
+      <div class="img-wrapper">
+        <img *ngIf="displayImg && villaInfo?.imageUrl" [src]="villaInfo?.imageUrl" alt="" />
+      </div>
     </div>
     <div>
-      <mat-form-field appearance="standard">
+      <!-- <mat-form-field appearance="standard">
         <mat-label>Image 2</mat-label>
-        <!-- <label for="imageurl2">Image 2</label> -->
         <input
           matInput
           type="text"
@@ -139,12 +141,15 @@
           name="imageUrl2"
           id="imageurl2"
         />
-      </mat-form-field>
+      </mat-form-field> -->
+      <app-image-upload num="2" (urlOutput)="getUploadedImageUrl($event, 2)"></app-image-upload>
+      <div class="img-wrapper">
+        <img *ngIf="displayImg2 && villaInfo?.imageUrl2" [src]="villaInfo?.imageUrl2" alt="" />
+      </div>
     </div>
     <div>
-      <mat-form-field appearance="standard">
+      <!-- <mat-form-field appearance="standard">
         <mat-label>Image 3</mat-label>
-        <!-- <label for="imageurl3">Image 3</label> -->
         <input
           matInput
           type="text"
@@ -152,8 +157,13 @@
           [ngModel]="villaInfo?.imageUrl3"
           name="imageUrl3"
           id="imageurl3"
+          disabled
         />
-      </mat-form-field>
+      </mat-form-field> -->
+      <app-image-upload num="3" (urlOutput)="getUploadedImageUrl($event, 3)"></app-image-upload>
+      <div class="img-wrapper">
+        <img *ngIf="displayImg3 && villaInfo?.imageUrl3" [src]="villaInfo?.imageUrl3" alt="" />
+      </div>
     </div>
     <!-- <div>
       <mat-form-field appearance="standard">
@@ -178,7 +188,9 @@
         (coordinates)="coordinatesEvent($event)"
       ></app-map>
     </div>
-    <button mat-raised-button color="primary" [disabled]="!isOwner || villaFormInput.invalid">Edit property</button>
+    <button class="edit-btn" mat-raised-button color="primary" [disabled]="!isOwner || villaFormInput.invalid">
+      Edit property
+    </button>
   </form>
   <div class="buttons">
     <button mat-raised-button (click)="backHandler()">Back</button>

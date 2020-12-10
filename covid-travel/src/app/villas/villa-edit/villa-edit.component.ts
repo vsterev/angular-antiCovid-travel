@@ -1,7 +1,7 @@
+import { IVilla } from './../../shared/interfaces/villa';
 import { UserService } from './../../user/user.service';
 import { ChangeDetectionStrategy, Component, ElementRef, Input, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { Router, ActivatedRouteSnapshot, ActivatedRoute } from '@angular/router';
-import { IVilla } from 'src/app/shared/interfaces/villa';
 import { VillaService } from '../villa.service';
 import { Location } from '@angular/common';
 import { switchMap, tap } from 'rxjs/operators';
@@ -15,26 +15,21 @@ import { IvyParser } from '@angular/compiler';
 })
 export class VillaEditComponent implements OnInit {
 
-  // get isOwner(): void {
-  //   //  this.villaInfo?.creatorId._id === this.userService.currentUser._id;
-  //   console.log(this.villaInfo.creatorId._id)
-  // }
-  // name: string;
-  // region: string;
-  // date: string;
-  // beds: number;
-  //  nights, price, priceDescription, description, imageUrl, imageUrl2, imageUrl3, lat, lng
   villaInfo?: IVilla;
   isOwner: boolean | undefined;
   toLike: boolean | undefined;
   toDislike: boolean | undefined;
   likesNumber?: number;
   errMsg = '';
+  imageUrl?: string;
+  imageUrl2?: string;
+  imageUrl3?: string;
+  displayImg = true;
+  displayImg2 = true;
+  displayImg3 = true;
   coordinates?: { lat: string, lng: string };
+  currentCoordinates?: { lat: string, lng: string };
 
-  // likesDisplay(): number {
-  //   return this.villaInfo?.likes.length;
-  // }
   constructor(
     private villaService: VillaService,
     private router: Router,
@@ -48,6 +43,10 @@ export class VillaEditComponent implements OnInit {
     this.villaService.villaDetail(this.activatedRoute.snapshot.params.id).subscribe((result: any) => {
       const villa: any = result;
       this.villaInfo = villa;
+      this.currentCoordinates = result.coordinates;
+      this.imageUrl = villa.imageUrl;
+      this.imageUrl2 = villa.imageUrl2;
+      this.imageUrl3 = villa.imageUrl3;
       this.isOwner = villa.creatorId._id === this.userService.currentUser.userId;
       this.toLike = !villa.likes.includes(this.userService.currentUser.userId) && !this.isOwner;
       this.toDislike = villa.likes.includes(this.userService.currentUser.userId) && !this.isOwner;
@@ -63,9 +62,13 @@ export class VillaEditComponent implements OnInit {
 
   submitHandler(val: {}): void {
     const { name, region, date, beds, nights, price, priceDescription, description, imageUrl, imageUrl2, imageUrl3, lat, lng }: any = val;
+    // console.log(this.coordinates)
+    if (this.coordinates === undefined) {
+      this.coordinates = this.currentCoordinates;
+    }
     const villaInfo: any = {
       name, region, date, beds, nights, price, priceDescription, description,
-      imageUrl, imageUrl2, imageUrl3, coordinates: { ...this.coordinates }
+      imageUrl: this.imageUrl, imageUrl2: this.imageUrl2, imageUrl3: this.imageUrl3, coordinates: { ...this.coordinates }
     };
     // console.log(villaInfo);
     this.villaService.villaEdit(villaInfo, this.activatedRoute.snapshot.params.id)
@@ -136,5 +139,24 @@ export class VillaEditComponent implements OnInit {
   }
   coordinatesEvent(coors: { lat: string, lng: string }): void {
     this.coordinates = coors;
+  }
+  getUploadedImageUrl(event: any, num: number): boolean {
+    switch (num) {
+      case 2: {
+        this.imageUrl2 = event;
+        this.displayImg2 = false;
+        break;
+      }
+      case 3: {
+        this.imageUrl3 = event;
+        this.displayImg3 = false;
+        break;
+      }
+      default: {
+        this.imageUrl = event;
+        this.displayImg = false;
+      }
+    }
+    return false;
   }
 }

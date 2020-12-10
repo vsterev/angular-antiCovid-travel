@@ -15,16 +15,22 @@ export class VillaAddComponent implements OnInit {
   goBack = false;
   errMsg = '';
   coordinates?: { lat: string, lng: string };
+  imageUrl?: string;
+  imageUrl2?: string;
+  imageUrl3?: string;
+
   // @Input() coordinates?: { lat: string, lng: string };
   ngOnInit(): void {
     this.goBack = history.state?.goBack || false;
   }
   submitHandler(val: {}): void {
     // console.log(val)
-    const { name, region, date, beds, nights, price, priceDescription, description, imageUrl, imageUrl2, imageUrl3, lat, lng }: any = val;
+    // const { name, region, date, beds, nights, price, priceDescription, description, imageUrl, imageUrl2, imageUrl3, lat, lng }: any = val;
+    const { name, region, date, beds, nights, price, priceDescription, description, lat, lng }: any = val;
     const villaInfo: any = {
       name, region, date, beds, nights, price, priceDescription, description,
-      imageUrl, imageUrl2, imageUrl3, coordinates: { lat: this.coordinates?.lat, lng: this.coordinates?.lng }
+      imageUrl: this.imageUrl, imageUrl2: this.imageUrl2, imageUrl3: this.imageUrl3,
+      coordinates: { lat: this.coordinates?.lat, lng: this.coordinates?.lng }
     };
     // console.log(villaInfo);
     this.villaService.villaAdd(villaInfo)
@@ -45,4 +51,20 @@ export class VillaAddComponent implements OnInit {
   eventCoordinates(coord: { lat: string, lng: string }): void {
     this.coordinates = coord;
   }
+  getUploadedImageUrl(event: any, num: number): boolean {
+    switch (num) {
+      case 2: this.imageUrl2 = event;
+        ; break;
+      case 3: this.imageUrl3 = event;
+        break;
+      default:
+        this.imageUrl = event;
+    }
+    // this.imageUrl = event;
+    return false;
+  }
+  // getUploadedImageUrl2(event: any): boolean {
+  //   this.imageUrl2 = event;
+  //   return false;
+  // }
 }

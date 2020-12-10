@@ -1,6 +1,7 @@
 <div class="container">
   <h1>Add your property</h1>
-  <form #villaFormInput="ngForm" (ngSubmit)="submitHandler(villaFormInput.value)">
+  <!-- <form #villaFormInput="ngForm" (ngSubmit)="submitHandler(villaFormInput.value)"> -->
+  <form #villaFormInput="ngForm">
     <!-- <form #villaFormInput="ngForm" (ngSubmit)="submitHandler($event)"> -->
     <div>
       <mat-form-field appearance="standard">
@@ -88,29 +89,35 @@
       <input type="textarea" #descriptionInput="ngModel" ngModel name="description" id="description" /> -->
     </div>
     <div>
-      <mat-form-field appearance="standard">
+      <!-- <mat-form-field appearance="standard">
         <mat-label>Image 1</mat-label>
         <input matInput type="text" #imageurlInput="ngModel" ngModel name="imageUrl" id="imageurl" required />
         <mat-error *ngIf="imageurlInput.errors?.required && imageurlInput.touched"
           >Please enter a one photo at least</mat-error
         >
-      </mat-form-field>
+      </mat-form-field> -->
+      <app-image-upload num="1" (urlOutput)="getUploadedImageUrl($event, 1)"></app-image-upload>
+      <!-- <img *ngIf="imageUrl" [src]="imageUrl" [alt]="nameInput" max-width="450px" /> -->
       <!-- <label for="imageurl">Image 1</label>
       <input type="text" #imageurlInput="ngModel" ngModel name="imageUrl" id="imageurl" /> -->
     </div>
     <div>
-      <mat-form-field appearance="standard">
-        <mat-label>Image 2</mat-label>
-        <input matInput type="text" #imageurl2Input="ngModel" ngModel name="imageUrl2" id="imageurl2" />
-      </mat-form-field>
+      <!-- <mat-form-field appearance="standard"> -->
+      <!-- <mat-label>Image 2</mat-label> -->
+      <!-- <input matInput type="text" #imageurl2Input="ngModel" [ngModel]="imageUrl2" name="imageUrl2" id="imageurl2" /> -->
+      <app-image-upload num="2" (urlOutput)="getUploadedImageUrl($event, 2)"></app-image-upload>
+      <!-- <img *ngIf="imageUrl2" [src]="imageUrl2" [alt]="nameInput + '2'" max-width="450px" /> -->
+      <!-- </mat-form-field> -->
       <!-- <label for="imageurl2">Image 2</label>
       <input type="text" #imageurl2Input="ngModel" ngModel name="imageUrl2" id="imageurl2" /> -->
     </div>
     <div>
-      <mat-form-field appearance="standard">
+      <!-- <mat-form-field appearance="standard">
         <mat-label>Image 3</mat-label>
         <input matInput type="text" #imageurl3Input="ngModel" ngModel name="imageUrl3" id="imageurl3" />
-      </mat-form-field>
+      </mat-form-field> -->
+      <app-image-upload num="3" (urlOutput)="getUploadedImageUrl($event, 3)"></app-image-upload>
+
       <!-- <label for="imageurl3">Image 3</label>
       <input type="text" #imageurl3Input="ngModel" ngModel name="imageUrl3" id="imageurl3" /> -->
     </div>
@@ -131,11 +138,23 @@
       <input type="text" #lngInput="ngModel" ngModel name="lng" id="lng" /> -->
     <!-- </div> -->
     <div class="map-wrapper">
-      <app-map (coordinates)="eventCoordinates($event)"></app-map>
+      <app-map
+        (coordinates)="eventCoordinates($event)"
+        [lat]="45.58329"
+        [lng]="16.321874"
+        [hasMarker]="false"
+      ></app-map>
     </div>
     <div class="buttons-wrap">
       <button mat-raised-button (click)="goBackHandler()">back</button>
-      <button mat-raised-button color="primary" [disabled]="villaFormInput.invalid">Add property</button>
+      <button
+        mat-raised-button
+        color="primary"
+        [disabled]="villaFormInput.invalid"
+        (click)="submitHandler(villaFormInput.value)"
+      >
+        Add property
+      </button>
     </div>
   </form>
   <div class="error" *ngIf="errMsg">{{ errMsg }}</div>

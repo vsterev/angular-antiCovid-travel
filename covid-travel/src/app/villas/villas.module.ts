@@ -17,9 +17,15 @@ import { VillasBookedComponent } from './villas-booked/villas-booked.component';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatChipsModule } from '@angular/material/chips';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatBadgeModule } from '@angular/material/badge';
+import { NgxMatFileInputModule } from '@angular-material-components/file-input';
 import { AgmCoreModule } from '@agm/core';
 import { NguCarouselModule } from '@ngu/carousel';
+import { ImageUploadComponent } from './image-upload/image-upload.component';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { MatProgressBarModule } from '@angular/material/progress-bar'
 
 @NgModule({
   declarations: [
@@ -32,7 +38,8 @@ import { NguCarouselModule } from '@ngu/carousel';
     VillasListComponent,
     VillasBookedComponent,
     MapComponent,
-    CarouselComponent
+    CarouselComponent,
+    ImageUploadComponent
   ],
   exports: [
     VillasListComponent,
@@ -47,10 +54,24 @@ import { NguCarouselModule } from '@ngu/carousel';
     MatButtonModule,
     MatChipsModule,
     MatBadgeModule,
+    MatToolbarModule,
+    MatProgressBarModule,
+    NgxMatFileInputModule,
     NguCarouselModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAly0ITa9Bt9omdeaKO4VZRueW_3N6fwhw'
-    })
+    }),
+    AngularFireModule.initializeApp({
+      apiKey: 'AIzaSyCcKMbiQ67cM4oc0p_Vz8S_cV4p3Q5erbE',
+      authDomain: 'covid-travel-36e4f.firebaseapp.com',
+      databaseURL: 'https://covid-travel-36e4f-default-rtdb.europe-west1.firebasedatabase.app',
+      projectId: 'covid-travel-36e4f',
+      storageBucket: 'covid-travel-36e4f.appspot.com',
+      messagingSenderId: '732322297599',
+      appId: '1:732322297599:web:aae2b5839d648992493eca',
+      measurementId: 'G-HH1PSPFNR5'
+    }),
+    AngularFireStorageModule
     // HttpClientModule
   ]
 })

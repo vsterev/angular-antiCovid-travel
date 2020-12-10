@@ -1,0 +1,11 @@
+mat-form-field {
+  width: 80%;
+  margin: 0 auto;
+  font-size: 18px;
+}
+mat-progress-bar {
+  width: 80%;
+}
+img {
+  width: 610px;
+}

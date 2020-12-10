@@ -4,7 +4,16 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:4000/api'
+  apiUrl: 'http://localhost:4000/api',
+  // firebaseConfig: {
+  //   apiKey: 'AIzaSyCcKMbiQ67cM4oc0p_Vz8S_cV4p3Q5erbE',
+  //   authDomain: 'covid-travel-36e4f.firebaseapp.com',
+  //   projectId: 'covid-travel-36e4f',
+  //   storageBucket: 'covid-travel-36e4f.appspot.com',
+  //   messagingSenderId: '732322297599',
+  //   appId: '1:732322297599:web:aae2b5839d648992493eca',
+  //   measurementId: 'G-HH1PSPFNR5'
+  // }
 };
 
 /*

@@ -3,7 +3,11 @@
   <div class="region">{{ villa?.region }}</div>
   <div class="img-wrapper">
     <!-- <a (click)="moreHandler()" [ngClass]="isDisabled ? 'disabled' : null"><img [src]="villa?.imageUrl" /></a> -->
-    <img [src]="villa?.imageUrl" />
+    <ng-template #disabled><img [src]="villa?.imageUrl" /></ng-template>
+    <ng-template #enabled
+      ><a [routerLink]="['/villa/detail', villa?._id]"><img [src]="villa?.imageUrl" /></a
+    ></ng-template>
+    <ng-container *ngTemplateOutlet="isDisabled ? disabled : enabled"></ng-container>
   </div>
   <div class="info">
     <div class="price-wrap">

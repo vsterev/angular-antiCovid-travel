@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, AfterViewInit, AfterContentInit, AfterContentChecked } from '@angular/core';
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
@@ -15,13 +15,22 @@ export class MapComponent implements OnInit {
   infoWindow: any;
   // coordinates?: { lat: string, lng: string };
   constructor() { }
+  // ngAfterContentChecked(): void {
+  //   console.log(this.lat, 'after');
+  // if (this.lat === 0 && this.lng === 0) {
+  //   this.lat = 45.583290;
+  //   this.lng = 16.321874;
+  //   this.hasMarker = false;
+  //   this.zoom = 6;
+  // }
   ngOnInit(): void {
-    if (this.lat === 0 && this.lng === 0) {
-      this.lat = 45.583290;
-      this.lng = 16.321874;
-      this.hasMarker = false;
-      this.zoom = 6;
-    }
+    // console.log(this.lat, 'onInit');
+    // if (this.lat === 0 && this.lng === 0) {
+    //   this.lat = 45.583290;
+    //   this.lng = 16.321874;
+    //   this.hasMarker = false;
+    //   this.zoom = 6;
+    // }
   }
   onMapReady(map: any): void {
     map.addListener('click', (e: any) => {

@@ -1,13 +1,14 @@
 div.container {
-  width: 80%;
-  margin: 10px auto 0 25%;
+  width: 40%;
+  margin: 10px auto;
 }
 /* form > div {
   width: 100%;
   margin: 0 auto;
 } */
-mat-form-field {
-  width: 50%;
+mat-form-field,
+app-image-upload {
+  width: 80%;
   margin: 0 auto;
   font-size: 18px;
 }
@@ -22,9 +23,10 @@ div.error {
   font-size: 18px;
 }
 div.buttons {
-  width: 50%;
+  width: 100%;
   display: flex;
   justify-content: space-between;
+  align-self: center;
 }
 button.modal {
   background: red;
@@ -33,4 +35,19 @@ div.map-wrapper {
   height: 400px;
   width: 800px;
   margin-bottom: 10px;
+}
+
+div.img-wrapper {
+  max-width: 80%;
+}
+img {
+  max-width: 610px;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  /* max-width: 770px; */
+}
+button.edit-btn {
+  align-self: center;
 }
