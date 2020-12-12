@@ -1,6 +1,7 @@
 import { IVilla } from 'src/app/shared/interfaces/villa';
 import { VillaService } from './../villas/villa.service';
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-home-auth',
@@ -16,7 +17,10 @@ export class HomeAuthComponent implements OnInit {
   from: string;
   to: string;
   search: string;
-  constructor(private villaService: VillaService) {
+  constructor(
+    private villaService: VillaService,
+    private titleService: Title
+  ) {
     this.villas = [];
     this.from = '';
     this.to = '';
@@ -38,12 +42,7 @@ export class HomeAuthComponent implements OnInit {
       );
   }
   ngOnInit(): void {
-    // const str = { from: this.from, to: this.to, search: this.search };
-    // this.villaService.villaListExtended(str)
-    //   .subscribe((villas) => {
-    //     this.villas = villas;
-    //   }
-    //   );
+    this.titleService.setTitle('Covid Travel - Home page');
     this.getVillas();
   }
   searchHandler(val: { from: string, to: string, search: string }): void {

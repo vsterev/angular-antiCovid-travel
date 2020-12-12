@@ -29,12 +29,15 @@ function auth() {
         if (['token expired', 'blacklisted token', 'jwt must be provided', 'jwt malformed'].includes(err.message)) {
           // res.redirect('/user/login?error')
           console.log('tuk e' + err);
-          res.clearCookie(config.authCookieName).json({ logoutSuccess: true });
+          res.status(401).json({ message: 'Invalid token' });
+
+          // res.status(401).clearCookie(config.authCookieName).json({ logoutSuccess: true });
+
           // res.json({ message: 'Invalid token!' });
           return;
         }
         console.log(err);
-        res.clearCookie(config.authCookieName).json({ logoutSuccess: true });
+        // res.status(401).clearCookie(config.authCookieName).json({ logoutSuccess: true });
         // res.json({ message: 'Invalid token!' });
       });
   };

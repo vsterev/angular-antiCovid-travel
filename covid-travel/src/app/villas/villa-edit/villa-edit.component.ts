@@ -47,9 +47,9 @@ export class VillaEditComponent implements OnInit {
       this.imageUrl = villa.imageUrl;
       this.imageUrl2 = villa.imageUrl2;
       this.imageUrl3 = villa.imageUrl3;
-      this.isOwner = villa.creatorId._id === this.userService.currentUser.userId;
-      this.toLike = !villa.likes.includes(this.userService.currentUser.userId) && !this.isOwner;
-      this.toDislike = villa.likes.includes(this.userService.currentUser.userId) && !this.isOwner;
+      this.isOwner = villa.creatorId._id === this.userService.currentUser?.userId;
+      this.toLike = !villa.likes.includes(this.userService.currentUser?.userId) && !this.isOwner;
+      this.toDislike = villa.likes.includes(this.userService.currentUser?.userId) && !this.isOwner;
       this.likesNumber = this.villaInfo?.likes.length;
 
     },

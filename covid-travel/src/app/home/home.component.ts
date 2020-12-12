@@ -2,6 +2,7 @@ import { VillaService } from './../villas/villa.service';
 import { UserService } from './../user/user.service';
 import { IVilla } from '../shared/interfaces/villa';
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-home',
@@ -11,7 +12,12 @@ import { Component, OnInit } from '@angular/core';
 export class HomeComponent implements OnInit {
   // villas: IVilla[] = [];
   villas: IVilla[];
-  constructor(private villaService: VillaService) {
+  isLogged = false;
+  constructor(
+    private villaService: VillaService,
+    private userService: UserService,
+    private titleService: Title
+  ) {
     this.villas = [];
   }
   ngOnInit(): void {
@@ -19,6 +25,9 @@ export class HomeComponent implements OnInit {
       .subscribe(villas => {
         this.villas = villas;
       });
+    this.titleService.setTitle('Covid Travel - Home page')
   }
-
+  ngDoCheck(): void {
+    this.isLogged = this.userService.isLogged;
+  }
 }

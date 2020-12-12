@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { UserService } from '../user.service';
 
@@ -12,9 +13,13 @@ export class RegisterComponent implements OnInit {
   emailRegex = new RegExp(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/);
   errMessage = '';
 
-  constructor(private userService: UserService, private router: Router) { }
+  constructor(
+    private userService: UserService,
+    private router: Router,
+    private titleService: Title) { }
 
   ngOnInit(): void {
+    this.titleService.setTitle('Covid Travel - Register form')
   }
   handleRegister({ email, password, name }: { email: string, password: string, name: string }): void {
     // const { email, password } = val;

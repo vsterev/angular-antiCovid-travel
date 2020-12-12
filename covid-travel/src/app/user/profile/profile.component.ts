@@ -4,6 +4,7 @@ import { IUser } from 'src/app/shared/interfaces/user';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { tap, catchError } from 'rxjs/operators';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-profile',
@@ -11,7 +12,7 @@ import { tap, catchError } from 'rxjs/operators';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  user: IUser;
+  user?: IUser | null;
   nameChanging: boolean;
   passChanging: boolean;
   errMsg: string | undefined;
@@ -20,17 +21,18 @@ export class ProfileComponent implements OnInit {
   constructor(
     private userService: UserService,
     private router: Router,
-    private location: Location
+    private location: Location,
+    private titleService: Title
   ) {
     this.errMsg = undefined;
-    this.user = this.userService.currentUser;
+    this.user = this.userService?.currentUser;
     this.nameChanging = false;
     this.passChanging = false;
     this.passRegex = new RegExp(/^[a-zA-Z0-9]{5,}$/);
   }
 
   ngOnInit(): void {
-
+    this.titleService.setTitle('Covid Travel - User profile page')
   }
   changeNameHandler(): void {
     this.nameChanging = !this.nameChanging;
@@ -43,7 +45,9 @@ export class ProfileComponent implements OnInit {
     this.userService.nameChange({ name: nameObj.newName }).pipe(
       tap(test => {
         this.nameChanging = !this.nameChanging;
-        this.userService.currentUser.name = nameObj.newName;
+        if (this.userService.currentUser) {
+          this.userService.currentUser.name = nameObj.newName;
+        }
       })
     )
       .subscribe(() => {

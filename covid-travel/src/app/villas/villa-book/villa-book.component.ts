@@ -65,7 +65,7 @@ export class VillaBookComponent implements OnInit {
     this.villaService.villaDetail(this.activatedRoute.snapshot.params.id)
       .pipe(map((currentVilla: IVilla) => {
         this.villa = currentVilla;
-        this.isOwner = currentVilla.creatorId._id === this.userService.currentUser.userId;
+        this.isOwner = currentVilla.creatorId._id === this.userService.currentUser?.userId;
         this.isBooked = !!currentVilla.reservationId;
         this.touristConstruct(currentVilla.beds);
       })).subscribe(); // da se probva i tova
@@ -84,7 +84,7 @@ export class VillaBookComponent implements OnInit {
     const clients = val.tourists;
     const params = { villaId, clients, comment };
     this.villaService.villaBook(params).subscribe(() => {
-      this.router.navigate(['home']);
+      this.router.navigate(['user/profile']);
       console.log('tuk');
     },
       (err) => console.error(err)

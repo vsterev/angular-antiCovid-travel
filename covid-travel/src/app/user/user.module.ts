@@ -1,3 +1,4 @@
+import { UserService } from './user.service';
 import { UserRoutingModule } from './user-routing.moule';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -25,6 +26,9 @@ import { MatButtonModule } from '@angular/material/button';
   ],
   exports: [
     // LoginComponent
+  ],
+  providers: [
+    UserService
   ]
 })
 export class UserModule { }

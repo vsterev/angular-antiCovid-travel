@@ -1,16 +1,19 @@
 import { IUser } from './../shared/interfaces/user';
-import { tap, map, shareReplay } from 'rxjs/operators';
+import { tap, map, shareReplay, catchError } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable(
+  //   {
+  //   providedIn: 'root'
+  // }
+)
 export class UserService {
 
-  currentUser: any;
+  // currentUser: any;
+  currentUser?: IUser | null;
   // currentUser: IUser | null | undefined | any = undefined;
   // currentUser = null;
 
@@ -24,16 +27,26 @@ export class UserService {
   authCompleted$ = this.http.get('user/verify').pipe(shareReplay(1));
   constructor(private http: HttpClient, private router: Router) {
     // this.http.get<IUser>('user/verify')
+
     this.authCompleted$
       .subscribe(
-        (user) => {
+        (user: any) => {
           this.currentUser = user;
         },
         () => {
           this.currentUser = null;
         }
       );
+
   }
+  // userVerify(): Observable<IUser | null> {
+  //   return this.http.get<IUser>('user/verify').pipe(
+  //     tap(((user) => this.currentUser = user)),
+  //     catchError(() => {
+  //       this.currentUser = null;
+  //       return of(null);
+  //     }))
+  // }
 
   login(email: string, password: string): Observable<IUser> {
     return this.http.post<IUser>('user/login', { email, password })

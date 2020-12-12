@@ -1,4 +1,5 @@
 const { villaModel, userModel, reservationModel } = require('../models');
+const { populate } = require('../models/user');
 
 module.exports = {
   get: {
@@ -7,6 +8,7 @@ module.exports = {
       const { limit } = req.params;
       villaModel
         .find()
+        .populate('reservationId')
         .sort({ likes: -1, created_аt: -1 })
         .limit(+limit)
         .then((villas) => {

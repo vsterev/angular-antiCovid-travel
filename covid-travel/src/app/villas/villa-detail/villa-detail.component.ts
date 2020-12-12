@@ -36,10 +36,10 @@ export class VillaDetailComponent implements OnInit {
     this.villaService.villaDetail(this.activatedRoute.snapshot.params.id)
       .subscribe(villa => {
         this.currentVilla = villa;
-        this.isOwner = villa.creatorId._id === this.userService.currentUser.userId;
+        this.isOwner = villa.creatorId._id === this.userService.currentUser?.userId;
         this.isBooked = !!villa.reservationId;
-        this.toLike = !villa.likes.includes(this.userService.currentUser.userId) && !this.isOwner;
-        this.toDislike = villa.likes.includes(this.userService.currentUser.userId) && !this.isOwner;
+        this.toLike = !villa.likes.includes(this.userService.currentUser!.userId) && !this.isOwner;
+        this.toDislike = villa.likes.includes(this.userService.currentUser!.userId) && !this.isOwner;
         this.likesNumber = this.currentVilla?.likes.length;
         // this.booksField = Array(villa.beds).fill(0).map((x, i) => i);
         this.carouselItems = [villa.imageUrl, villa.imageUrl2 || undefined, villa.imageUrl3 || undefined].filter(el => el);

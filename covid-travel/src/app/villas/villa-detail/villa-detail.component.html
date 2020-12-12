@@ -66,7 +66,7 @@
           <app-map
             [lat]="+currentVilla?.coordinates?.lat"
             [lng]="+currentVilla?.coordinates?.lng"
-            zoom="16"
+            zoom="12"
             [hasMarker]="true"
           ></app-map>
         </ng-container>
@@ -87,7 +87,7 @@
     <!-- <button mat-raised-button color="primary" (click)="clickToBookHandler()">to Book</button> -->
   </section>
 </div>
-<div class="name">{{ currentVilla?.name }}</div>
+<!-- <div class="name">{{ currentVilla?.name }}</div>
 <div class="description">{{ currentVilla?.description }}</div>
 <div class="price">price per stay{{ currentVilla?.price }} - Eur</div>
 <div class="price-descrp">{{ currentVilla?.priceDescription }}</div>
@@ -95,13 +95,13 @@
 <div class="likes">Likes: {{ likesNumber }}</div>
 <ng-template #availible> <div>availible</div></ng-template>
 <ng-template #unavailible><div>unavailible</div></ng-template>
-<ng-container *ngTemplateOutlet="currentVilla?.reservationId ? availible : unavailible"></ng-container>
+<ng-container *ngTemplateOutlet="currentVilla?.reservationId ? availible : unavailible"></ng-container> -->
 <!-- <div *ngIf="currentVilla?.reservationId">unavailible</div>
 <div *ngIf="!currentVilla?.reservationId">availible</div> -->
-<button *ngIf="toLike" (click)="likeHandler()">Like</button>
+<!-- <button *ngIf="toLike" (click)="likeHandler()">Like</button>
 <button *ngIf="toDislike" (click)="disLikeHandler()">Dislike</button>
 <button (click)="clickToBookHandler()" [disabled]="isBooked || isOwner">to Book</button>
-<button *ngIf="goBack" (click)="backHandler()">Back</button>
+<button *ngIf="goBack" (click)="backHandler()">Back</button> -->
 <!-- <div class="book" *ngIf="toBook"> -->
 <!-- <form #bookForm="ngForm" (ngSubmit)="bookNow(bookForm)">
     <div *ngFor="let pax of [].constructor(currentVilla?.beds); let i = index">

@@ -1,5 +1,47 @@
-<p>detail works!</p>
-<div>
+<div class="container">
+  <h1>Information about your booking in the system</h1>
+  <div class="title">
+    <h1>{{ reservation?.villaId?.name }} - {{ reservation?.villaId?.region }}</h1>
+  </div>
+  <div class="img-wrapper">
+    <img [src]="reservation?.villaId?.imageUrl" alt="" />
+  </div>
+  <div class="price-info">
+    <p>date check-in {{ reservation?.villaId?.date }} for {{ reservation?.villaId?.nights }} nights</p>
+    <p>maximum person: {{ reservation?.villaId?.beds }}</p>
+    <p>
+      price: <b>{{ reservation?.villaId?.price }}</b> Eur
+    </p>
+  </div>
+  <div class="price-terms">
+    <h2>price policy and terms</h2>
+    <textarea rows="5" disabled>{{ reservation?.villaId?.priceDescription }} </textarea>
+  </div>
+  <div>
+    <h3>Tourist attached to this booking:</h3>
+    <div *ngFor="let name of reservation?.clients; let i = index">
+      <mat-form-field appearance="legacy">
+        <mat-label>tourist {{ i + 1 }}:</mat-label>
+        <input matInput type="text" [value]="name" disabled />
+      </mat-form-field>
+    </div>
+  </div>
+  <div>
+    <h3>Comments assigned to the booking:</h3>
+    <ng-container *ngTemplateOutlet="reservation?.comments?.length !== 0 ? isComment : noComment"></ng-container>
+    <ng-template #noComment><div class="no-comment">No comment are added to reservation!</div></ng-template>
+    <ng-template #isComment>
+      <div class="comments" *ngFor="let comment of reservation?.comments; let i = index">
+        <mat-form-field appearance="legacy">
+          <mat-label>comment {{ i + 1 }}:</mat-label>
+          <textarea matInput disabled>{{ comment }}</textarea>
+        </mat-form-field>
+      </div>
+    </ng-template>
+  </div>
+</div>
+
+<!-- <div>
   <div>name: {{ reservation?.villaId?.name }}</div>
   <div>from: {{ reservation?.villaId?.date }} to: {{ reservation?.villaId?.nights }}</div>
   <div>{{ reservation?.villaId?.price }} Eur</div>
@@ -9,9 +51,7 @@
   <p>Comments attached to reservation:</p>
   <ng-container *ngTemplateOutlet="reservation?.comments?.length !== 0 ? isComment : noComment"></ng-container>
   <ng-template #noComment><div>No comment are added to reservation!</div></ng-template>
-  <ng-template #isComment>
-    <div class="comments" *ngFor="let comment of reservation?.comments">{{ comment }}</div>
-  </ng-template>
+
   <button *ngIf="goBack" (click)="goBackHandler()">Back</button>
   {{ reservation | json }}
-</div>
+</div> -->

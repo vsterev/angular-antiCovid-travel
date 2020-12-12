@@ -30,6 +30,19 @@ module.exports = {
           res.send({ err });
         });
     },
+    getProfileInfo: (req, res, next) => {
+      const { _id } = req.user;
+      console.log(_id);
+      userModel
+        .findOne({ _id }, { password: 0, __v: 0 }) //finding by Id and returning without password and __v
+        .then((user) => {
+          res.status(200).json(user);
+        })
+        .catch((err) => {
+          console.log(err);
+          res.status(401).json(err);
+        });
+    },
   },
   post: {
     login: (req, res, next) => {
@@ -76,7 +89,7 @@ module.exports = {
       tokenBlacklistModel
         .create({ token })
         .then(() => {
-          res.clearCookie(config.authCookieName).json({ logoutSuccess: true });
+          res.clearCookie(config.authCookieName).status(200).json({ logoutSuccess: true });
           // res.status(200).redirect('/');
         })
         .catch((err) => next(err));

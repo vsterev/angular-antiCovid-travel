@@ -1,3 +1,4 @@
+import { AuthGuard } from './core/guards/auth.guard';
 import { LogginResolver } from './loggin.resolver';
 import { RegisterComponent } from './user/register/register.component';
 import { LoginComponent } from './user/login/login.component';
@@ -19,6 +20,7 @@ const routes: Routes = [
     path: 'home',
     component: HomeComponent,
     canActivate: [TestGuard],
+    // canActivate: [AuthGuard],
     data: {
       isLogged: false
     }
@@ -27,6 +29,7 @@ const routes: Routes = [
     path: 'home-auth',
     component: HomeAuthComponent,
     canActivate: [TestGuard],
+    // canActivate: [AuthGuard],
     data: {
       isLogged: true
     }

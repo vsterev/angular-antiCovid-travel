@@ -50,7 +50,7 @@ export class TestGuard implements CanActivate {
             return true;
           }
           else {
-            this.router.navigate(['**']);
+            this.router.navigateByUrl('/home-auth');
             return false;
           }
         },
@@ -71,7 +71,7 @@ export class TestGuard implements CanActivate {
           if (isLoggedFromRoute === false) {
             return of(true);
           }
-          this.router.navigate(['login'])
+          this.router.navigate(['/login'])
           return of(false)
         }) // ако няма куки минава от тук и дава грешка
       );
