@@ -1,24 +1,22 @@
-import { UserService } from '../../user/user.service';
-import { IUser } from './../../shared/interfaces/user';
 import { Injectable } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router } from '@angular/router';
+import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, CanActivateChild, Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
+import { IUser } from 'src/app/shared/interfaces/user';
+import { UserService } from 'src/app/user/user.service';
 
-@Injectable(
-  //   {
-  //   providedIn: 'root'
-  // }
-)
-export class AuthGuard implements CanActivate {
+@Injectable()
+export class AuthChildGuard implements CanActivateChild {
   constructor(
     private userService: UserService,
     private router: Router
   ) { }
-  canActivate(
+  canActivateChild(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> {
+
     let stream$: Observable<IUser | null>;
+
     if (this.userService.currentUser === undefined) {
       stream$ = this.userService.getProfile();
     } else {

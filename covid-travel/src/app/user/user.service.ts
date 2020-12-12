@@ -25,29 +25,32 @@ export class UserService {
     return !!this.currentUser;
   }
   authCompleted$ = this.http.get('user/verify').pipe(shareReplay(1));
-  constructor(private http: HttpClient, private router: Router) {
+  constructor(
+    private http: HttpClient,
+    private router: Router
+  ) {
     // this.http.get<IUser>('user/verify')
 
-    this.authCompleted$
-      .subscribe(
-        (user: any) => {
-          this.currentUser = user;
-        },
-        () => {
-          this.currentUser = null;
-        }
-      );
+    // this.authCompleted$
+    //   .subscribe(
+    //     (user: any) => {
+    //       this.currentUser = user;
+    //     },
+    //     () => {
+    //       this.currentUser = null;
+    //     }
+    //   );
 
   }
-  // userVerify(): Observable<IUser | null> {
-  //   return this.http.get<IUser>('user/verify').pipe(
-  //     tap(((user) => this.currentUser = user)),
-  //     catchError(() => {
-  //       this.currentUser = null;
-  //       return of(null);
-  //     }))
-  // }
 
+  getProfile(): Observable<IUser | null> {
+    return this.http.get<IUser>('user/profile').pipe(
+      tap((user => this.currentUser = user)),
+      catchError(() => {
+        this.currentUser = null;
+        return of(null);
+      }))
+  }
   login(email: string, password: string): Observable<IUser> {
     return this.http.post<IUser>('user/login', { email, password })
       .pipe(tap((user: IUser) => {

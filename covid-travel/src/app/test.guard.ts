@@ -51,6 +51,7 @@ export class TestGuard implements CanActivate {
           }
           else {
             this.router.navigateByUrl('/home-auth');
+            // this.router.navigateByUrl(route.data.redirectUrl);
             return false;
           }
         },

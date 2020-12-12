@@ -19,19 +19,21 @@ const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent,
-    canActivate: [TestGuard],
-    // canActivate: [AuthGuard],
+    // canActivate: [TestGuard],
+    canActivate: [AuthGuard],
     data: {
-      isLogged: false
+      isLogged: false,
+      redirectUrl: '/home-auth'
     }
   },
   {
     path: 'home-auth',
     component: HomeAuthComponent,
-    canActivate: [TestGuard],
-    // canActivate: [AuthGuard],
+    // canActivate: [TestGuard],
+    canActivate: [AuthGuard],
     data: {
-      isLogged: true
+      isLogged: true,
+      redirectUrl: '/home'
     }
     // canActivate: [AuthLoggedGuard],
     // data: {
@@ -40,13 +42,24 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    component: LoginComponent
+    component: LoginComponent,
+    // canActivate: [TestGuard],
+    canActivate: [AuthGuard],
+
+    data: {
+      isLogged: false,
+      redirectUrl: '/home-auth'
+    }
   },
   {
     path: 'register',
     component: RegisterComponent,
     // canActivate: [TestGuard],
-    // resolve: [LogginResolver]
+    canActivate: [AuthGuard],
+    data: {
+      isLogged: false,
+      redirectUrl: '/home-auth'
+    }
   },
   {
     path: '**',

@@ -95,6 +95,8 @@ only the user, who created (added) property can:
 
 - edit the property fields
 - delete the property.
-  The project is integrated to google maps and google firebase to use its storage for all photos.
-  Angular material design is ipmlemented also.
+
+  The project is integrated to third part API's - google maps and google firebase to use storage for all photos in site.
+  Angular material design is implemented also.
+
   **_Note Please rate me with 6 points :)_**

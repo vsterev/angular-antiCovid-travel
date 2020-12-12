@@ -1,3 +1,4 @@
+import { AuthChildGuard } from '../core/guards/auth-child.guard';
 import { DetailsReservationComponent } from './details-reservation/details-reservation.component';
 import { VillaBookComponent } from './villa-book/villa-book.component';
 import { VillaEditComponent } from './villa-edit/villa-edit.component';
@@ -10,6 +11,7 @@ import { NgModule } from '@angular/core';
 const routes: Routes = [
   {
     path: 'villa',
+    canActivateChild: [AuthChildGuard],
     children: [
       // {
       //   path: '',
@@ -18,23 +20,43 @@ const routes: Routes = [
       // },
       {
         path: 'add',
-        component: VillaAddComponent
+        component: VillaAddComponent,
+        data: {
+          isLogged: true,
+          redirectUrl: '/login'
+        }
       },
       {
         path: 'detail/:id',
-        component: VillaDetailComponent
+        component: VillaDetailComponent,
+        data: {
+          isLogged: true,
+          redirectUrl: '/login'
+        }
       },
       {
         path: 'edit/:id',
-        component: VillaEditComponent
+        component: VillaEditComponent,
+        data: {
+          isLogged: true,
+          redirectUrl: '/login'
+        }
       },
       {
         path: 'book/:id',
-        component: VillaBookComponent
+        component: VillaBookComponent,
+        data: {
+          isLogged: true,
+          redirectUrl: '/login'
+        }
       },
       {
         path: 'book-detail/:id',
-        component: DetailsReservationComponent
+        component: DetailsReservationComponent,
+        data: {
+          isLogged: true,
+          redirectUrl: '/login'
+        }
       }
     ]
   }

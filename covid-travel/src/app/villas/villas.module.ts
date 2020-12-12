@@ -1,3 +1,4 @@
+import { AuthChildGuard } from '../core/guards/auth-child.guard';
 import { CarouselComponent } from './../shared/carousel/carousel.component';
 import { MapComponent } from 'src/app/shared/map/map.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -73,6 +74,9 @@ import { MatProgressBarModule } from '@angular/material/progress-bar'
     }),
     AngularFireStorageModule
     // HttpClientModule
+  ],
+  providers: [
+    AuthChildGuard
   ]
 })
 export class VillasModule { }

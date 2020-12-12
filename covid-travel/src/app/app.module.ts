@@ -1,3 +1,4 @@
+import { AuthGuard } from './core/guards/auth.guard';
 import { ReservationModule } from './reservation/reservation.module';
 import { FormsModule } from '@angular/forms';
 import { LogginResolver } from './loggin.resolver';
@@ -62,6 +63,7 @@ import { MatChipsModule } from '@angular/material/chips';
     },
     AuthLoggedGuard,
     LogginResolver,
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })
