@@ -1,13 +1,18 @@
+import { AuthChildGuard } from '../core/guards/auth-child.guard';
 import { DetailComponent } from './detail/detail.component';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthLoggedGuard } from '../auth-logged.guard';
 
 const routes: Routes = [
   {
     path: 'reservation',
+    canActivateChild: [AuthChildGuard],
     children: [
       {
         path: 'detail/:id',
+        data: {
+          isLogged: true,
+          redirectUrl: '/home'
+        },
         component: DetailComponent
       }
     ]
